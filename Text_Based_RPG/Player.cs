@@ -8,14 +8,12 @@ namespace Text_Based_RPG
 {
     internal class Player
     {
-        static int playerPosx; // play position
-        static int playerPosy; // play position
-
-        static void Update()
+        public int playerPosx; // play position
+        public int playerPosy; // play position
+        static Map map = new Map();
+        public void Update(ConsoleKeyInfo input)
         {
             // read user input
-            ConsoleKeyInfo input;
-            input = Console.ReadKey(true);
 
             if (input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow)
             {
@@ -33,17 +31,13 @@ namespace Text_Based_RPG
             {
                 playerPosx--;
             }
-            if (input.Key == ConsoleKey.Escape)
-            {
-                gameOver = true;
-            }
-
+            
         }
 
-        static void Draw()
+        public void Draw()
         {
             Console.Clear();
-
+            map.DrawMap(1);
             Console.SetCursorPosition(playerPosx, playerPosy);
             Console.Write("☺");
         }

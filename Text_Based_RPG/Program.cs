@@ -8,24 +8,30 @@ namespace Text_Based_RPG
 {
     internal class Program
     {
-        public bool gameOver; // true or false
+        static bool gameOver; // true or false
         static Map map = new Map();
         static Player player = new Player();
 
         static void Main(string[] args)
         {
+            player.playerPosx = 2;
+            player.playerPosy = 2;
             gameOver = false;
             map.DrawMap(1);
+            player.Draw();
+            
+
             while (gameOver == false)
             {
-                player.Update();
-                player.Draw();
+                Console.CursorVisible = false;
+                ConsoleKeyInfo input = Console.ReadKey(true);
                 if (input.Key == ConsoleKey.Escape)
                 {
                     gameOver = true;
                 }
+                player.Update(input);
+                player.Draw();
             }
-            Console.ReadKey(true);
         }
 
     }
