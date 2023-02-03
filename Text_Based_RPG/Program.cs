@@ -9,16 +9,20 @@ namespace Text_Based_RPG
     internal class Program
     {
         static bool gameOver; // true or false
-        static Map map = new Map();
+        public static Map map = new Map();
         static Player player = new Player();
+        static Enemy enemy = new Enemy();
 
         static void Main(string[] args)
         {
-            player.playerPosx = 2;
-            player.playerPosy = 2;
+            player.x = 2;
+            player.y = 2;
+            enemy.x = 3;
+            enemy.y = 9;
             gameOver = false;
             map.DrawMap(1);
             player.Draw();
+            enemy.Draw();
             
 
             while (gameOver == false)
@@ -30,7 +34,9 @@ namespace Text_Based_RPG
                     gameOver = true;
                 }
                 player.Update(input);
-                player.Draw();
+                player.Draw(); 
+                enemy.Update();
+                enemy.Draw();
             }
         }
 

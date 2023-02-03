@@ -8,37 +8,39 @@ namespace Text_Based_RPG
 {
     internal class Player
     {
-        public int playerPosx; // play position
-        public int playerPosy; // play position
-        static Map map = new Map();
+        public int x; // play position
+        public int y; // play position
+        int tempX;
+        int tempY;
+
         public void Update(ConsoleKeyInfo input)
         {
             // read user input
-
-            if (input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow)
-            {
-                playerPosy--;
-            }
-            if (input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow)
-            {
-                playerPosy++;
-            }
-            if (input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow)
-            {
-                playerPosx++;
-            }
-            if (input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow)
-            {
-                playerPosx--;
-            }
+            tempX = x;
+            tempY = y;
             
+            if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && Program.map.WallCheck(x, y-1) == true)
+            {
+                y--;
+            }
+            if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && Program.map.WallCheck(x, y+1) == true)
+            {
+                y++;
+            }
+            if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && Program.map.WallCheck(x+1, y) == true)
+            {
+                x++;
+            }
+            if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && Program.map.WallCheck(x-1, y) == true)
+            {
+                x--;
+            }
         }
 
         public void Draw()
         {
-            Console.Clear();
-            map.DrawMap(1);
-            Console.SetCursorPosition(playerPosx, playerPosy);
+            Program.map.Drawtile(tempX, tempY);
+            Console.SetCursorPosition(x, y);
             Console.Write("☺");
         }
     }
