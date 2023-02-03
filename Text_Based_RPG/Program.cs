@@ -10,8 +10,8 @@ namespace Text_Based_RPG
     {
         static bool gameOver; // true or false
         public static Map map = new Map();
-        static Player player = new Player();
-        static Enemy enemy = new Enemy();
+        public static Player player = new Player();
+        public static Enemy enemy = new Enemy();
 
         static void Main(string[] args)
         {
@@ -29,12 +29,12 @@ namespace Text_Based_RPG
             {
                 Console.CursorVisible = false;
                 ConsoleKeyInfo input = Console.ReadKey(true);
-                if (input.Key == ConsoleKey.Escape)
+                if ((input.Key == ConsoleKey.Escape) || player.health <= 0)
                 {
                     gameOver = true;
                 }
                 player.Update(input);
-                player.Draw(); 
+                player.Draw();
                 enemy.Update();
                 enemy.Draw();
             }
