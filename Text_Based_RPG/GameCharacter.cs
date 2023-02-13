@@ -48,25 +48,28 @@ namespace Text_Based_RPG
              * 4 - right
             */
             bool foe = false;
-            if (foeY == y - 1 && foeX == x && direction == 1)
+            if (target.health > 0) 
             {
-                target.TakeDamage(damage);
-                foe = true;
-            }
-            else if (foeY == y + 1 && foeX == x && direction == 2)
-            {
-                target.TakeDamage(damage);
-                foe = true;
-            }
-            else if (foeY == y && foeX == x - 1 && direction == 3)
-            {
-                target.TakeDamage(damage);
-                foe = true;
-            }
-            else if (foeY == y && foeX == x + 1 && direction == 4)
-            {
-                target.TakeDamage(damage);
-                foe = true;
+                if (foeY == y - 1 && foeX == x && direction == 1)
+                {
+                    target.TakeDamage(damage);
+                    foe = true;
+                }
+                else if (foeY == y + 1 && foeX == x && direction == 2)
+                {
+                    target.TakeDamage(damage);
+                    foe = true;
+                }
+                else if (foeY == y && foeX == x - 1 && direction == 3)
+                {
+                    target.TakeDamage(damage);
+                    foe = true;
+                }
+                else if (foeY == y && foeX == x + 1 && direction == 4)
+                {
+                    target.TakeDamage(damage);
+                    foe = true;
+                }
             }
             return foe;
         }
