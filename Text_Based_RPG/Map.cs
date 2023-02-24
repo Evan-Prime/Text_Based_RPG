@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Text_Based_RPG
 {
     internal class Map
     {
-        public char[,] map = new char[,] // dimensions defined by following data:
+        public char[,] map;
+
+        // = new char[,] // dimensions defined by following data:
+        /*
         {
             {'╔','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','╗'},
             {'║',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','║'},
@@ -30,46 +34,20 @@ namespace Text_Based_RPG
             {'║',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','║'},
             {'╚','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','═','╝'}
         };
-
+        */
         public void DrawMap(int scale)
         {
-            /*
-            Console.Write("╔");
-            for (int borderLine = 0; borderLine < map.GetLength(1) * scale; borderLine++)
+            string[] mapTotal = File.ReadAllLines(@"Map.txt");
+            map = new char[mapTotal.Length, mapTotal[0].Length];
+            for (int y = 0; y < mapTotal.Length; y++)
             {
-                Console.Write("═");
-            }
-            Console.Write("╗");
-
-            Console.WriteLine();
-            */
-            for (int y = 0; y < map.GetLength(0); y++)
-            {
-                for (int rows = 0; rows < scale; rows++)
+                for (int x = 0; x < mapTotal[y].Length; x++)
                 {
-                    //Console.Write("║");
-                    for (int x = 0; x < map.GetLength(1); x++)
-                    {
-
-                        for (int columns = 0; columns < scale; columns++)
-                        {
-                            Console.Write(map[y, x]);
-                        }
-
-                    }
-                    //Console.Write("║");
-
-                    Console.WriteLine();
+                    map[y, x] = mapTotal[y][x];
+                    Console.Write(map[y, x]);
                 }
+                Console.WriteLine();
             }
-            /*
-            Console.Write("╚");
-            for (int borderLine = 0; borderLine < map.GetLength(1) * scale; borderLine++)
-            {
-                Console.Write("═");
-            }
-            Console.Write("╝");
-            */
         }
 
         public void Drawtile(int x, int y)

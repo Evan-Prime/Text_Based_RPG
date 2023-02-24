@@ -19,19 +19,19 @@ namespace Text_Based_RPG
             tempX = x;
             tempY = y;
             
-            if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && Program.map.WallCheck(x, y-1) == true && base.FoeCheck(Program.enemy.x, Program.enemy.y, 1, Program.enemy) == false)
+            if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && GameManager.map.WallCheck(x, y-1) == true && base.FoeCheck(GameManager.enemy.x, GameManager.enemy.y, 1, GameManager.enemy) == false)
             {
                 y--;
             }
-            else if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && Program.map.WallCheck(x, y+1) == true && base.FoeCheck(Program.enemy.x, Program.enemy.y, 2, Program.enemy) == false)
+            else if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && GameManager.map.WallCheck(x, y+1) == true && base.FoeCheck(GameManager.enemy.x, GameManager.enemy.y, 2, GameManager.enemy) == false)
             {
                 y++;
             }
-            else if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && Program.map.WallCheck(x-1, y) == true && base.FoeCheck(Program.enemy.x, Program.enemy.y, 3, Program.enemy) == false)
+            else if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && GameManager.map.WallCheck(x-1, y) == true && base.FoeCheck(GameManager.enemy.x, GameManager.enemy.y, 3, GameManager.enemy) == false)
             {
                 x--;
             }
-            else if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && Program.map.WallCheck(x+1, y) == true && base.FoeCheck(Program.enemy.x, Program.enemy.y, 4, Program.enemy) == false)
+            else if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && GameManager.map.WallCheck(x+1, y) == true && base.FoeCheck(GameManager.enemy.x, GameManager.enemy.y, 4, GameManager.enemy) == false)
             {
                 x++;
             }

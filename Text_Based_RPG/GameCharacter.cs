@@ -34,7 +34,7 @@ namespace Text_Based_RPG
         }
         public void Draw()
         {
-            Program.map.Drawtile(tempX, tempY);
+            GameManager.map.Drawtile(tempX, tempY);
             Console.SetCursorPosition(x, y);
             Console.Write(icon);
         }
