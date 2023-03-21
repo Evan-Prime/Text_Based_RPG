@@ -25,8 +25,8 @@ namespace Text_Based_RPG
             // initializing
             player.x = 2;
             player.y = 2;
-            enemy.x = 2;
-            enemy.y = 32;
+            enemy.x = 19;
+            enemy.y = 19;
             gameOver = false;
             scale = 1;
             map.DrawMap(scale);
