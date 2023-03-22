@@ -11,8 +11,11 @@ namespace Text_Based_RPG
         static bool gameOver; // true or false
         static int scale;
         public static Map map = new Map();
-        public static Player player = new Player();
-        public static Enemy enemy = new Enemy();
+        public static EvilClone clone = new EvilClone(19, 19, 19, 19);
+        public static EvilPixie pixie = new EvilPixie(6, 16, 6, 16);
+        public static NormalSlime slime = new NormalSlime(54, 18, 54, 18);
+        public static EnemyManager enemyManager = new EnemyManager(new Enemy[] {clone, pixie, slime});
+        public static Player player = new Player(enemyManager);
 
 
         public GameManager ()
@@ -25,13 +28,13 @@ namespace Text_Based_RPG
             // initializing
             player.x = 2;
             player.y = 2;
-            enemy.x = 19;
-            enemy.y = 19;
             gameOver = false;
             scale = 1;
             map.DrawMap(scale);
             player.Draw();
-            enemy.Draw();
+            clone.Draw();
+            pixie.Draw();
+            slime.Draw();
             Console.CursorVisible = false;
 
             // game loop
@@ -47,10 +50,14 @@ namespace Text_Based_RPG
 
                 // update
                 player.Update(input);
-                enemy.Update();
+                clone.Update();
+                pixie.Update();
+                slime.Update();
 
                 // draw
-                enemy.Draw();
+                clone.Draw();
+                pixie.Draw();
+                slime.Draw();
                 player.Draw();
             }
         }

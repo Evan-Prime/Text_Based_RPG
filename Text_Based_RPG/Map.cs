@@ -58,7 +58,7 @@ namespace Text_Based_RPG
             Console.Write(map[y,x]);
         }
 
-        public bool WallCheck (int x, int y)
+        public bool FloorCheck (int x, int y)
         {
             bool wall = false;
             if (map[y,x] == ' ')

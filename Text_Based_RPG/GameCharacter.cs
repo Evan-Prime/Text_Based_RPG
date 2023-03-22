@@ -31,6 +31,11 @@ namespace Text_Based_RPG
             if (hp < 0) return;
             health -= hp;
             if (health < 0) health = 0;
+            if (health == 0)
+            {
+                Console.SetCursorPosition(x, y);
+                Console.Write(' ');
+            }
         }
         public void Draw()
         {
@@ -39,35 +44,15 @@ namespace Text_Based_RPG
             Console.Write(icon);
         }
 
-        public bool FoeCheck(int foeX, int foeY, int direction, GameCharacter target)
+        public bool AmIHere (int targetX, int targetY, int damage)
         {
-            /*
-             * 1 - up
-             * 2 - down
-             * 3 - left
-             * 4 - right
-            */
+            
             bool foe = false;
-            if (target.health > 0) 
+            if (health > 0) 
             {
-                if (foeY == y - 1 && foeX == x && direction == 1)
+                if (targetY == y && targetX == x)
                 {
-                    target.TakeDamage(damage);
-                    foe = true;
-                }
-                else if (foeY == y + 1 && foeX == x && direction == 2)
-                {
-                    target.TakeDamage(damage);
-                    foe = true;
-                }
-                else if (foeY == y && foeX == x - 1 && direction == 3)
-                {
-                    target.TakeDamage(damage);
-                    foe = true;
-                }
-                else if (foeY == y && foeX == x + 1 && direction == 4)
-                {
-                    target.TakeDamage(damage);
+                    TakeDamage(damage);
                     foe = true;
                 }
             }

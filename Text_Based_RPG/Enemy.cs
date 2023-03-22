@@ -18,38 +18,41 @@ namespace Text_Based_RPG
             this.moveAt = moveAt;
         }
 
-        public void Update()
+        public virtual void Update()
         {
             // read user input
             tempX = x;
             tempY = y;
-
-            switch (random.Next(0,4))
+            
+            if (health > 0 && MoveCheck() == true)
             {
-                case 0:
-                    if ((GameManager.map.WallCheck(x, y-1) == true) && health > 0 && base.FoeCheck(GameManager.player.x, GameManager.player.y, 1, GameManager.player) == false && MoveCheck() == true)
-                    {
-                        y--;
-                    }
-                    break;
-                case 1:
-                    if ((GameManager.map.WallCheck(x, y + 1) == true) && health > 0 && base.FoeCheck(GameManager.player.x, GameManager.player.y, 2, GameManager.player) == false && MoveCheck() == true)
-                    {
-                        y++;
-                    }
-                    break;
-                case 2:
-                    if ((GameManager.map.WallCheck(x-1, y) == true) && health > 0 && base.FoeCheck(GameManager.player.x, GameManager.player.y, 3, GameManager.player) == false && MoveCheck() == true)
-                    {
-                        x--;
-                    }
-                    break;
-                case 3:
-                    if ((GameManager.map.WallCheck(x+1, y) == true) && health > 0 && base.FoeCheck(GameManager.player.x, GameManager.player.y, 4, GameManager.player) == false && MoveCheck() == true)
-                    {
-                        x++;
-                    }
-                    break;
+                switch (random.Next(0, 4))
+                {
+                    case 0:
+                        if ((GameManager.map.FloorCheck(x, y - 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false)
+                        {
+                            y--;
+                        }
+                        break;
+                    case 1:
+                        if ((GameManager.map.FloorCheck(x, y + 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false)
+                        {
+                            y++;
+                        }
+                        break;
+                    case 2:
+                        if ((GameManager.map.FloorCheck(x - 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false)
+                        {
+                            x--;
+                        }
+                        break;
+                    case 3:
+                        if ((GameManager.map.FloorCheck(x + 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false)
+                        {
+                            x++;
+                        }
+                        break;
+                }
             }
 
             moveCounter++;
@@ -57,7 +60,10 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
-            base.Draw();
+            if (health > 0)
+            {
+                base.Draw();
+            }
         }
 
         public void TakeDamage(int damageValue)
