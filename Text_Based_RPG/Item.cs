@@ -29,10 +29,15 @@ namespace Text_Based_RPG
         {
 
             bool item = false;
-            if (targetY == y && targetX == x)
+            if (targetY == y && targetX == x && active == true)
             {
                 item = true;
                 PickUpEffect();
+                if (active == false)
+                {
+                    Console.SetCursorPosition(x, y);
+                    Console.Write(' ');
+                }
             }
             return item;
         }

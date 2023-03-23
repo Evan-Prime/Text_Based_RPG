@@ -9,10 +9,16 @@ namespace Text_Based_RPG
     internal class ItemManager
     {
         Item[] items;
+        public DamageUp damageUp;
+        public HealthPotion healthPotion;
+        public HealthUp healthUp;
 
-        public ItemManager(Item[] items)
+        public ItemManager(Player player)
         {
-            this.items = items;
+            damageUp = new DamageUp(16, 14, player, 5);
+            healthPotion = new HealthPotion(74, 16, player, 5);
+            healthUp = new HealthUp(77, 16, player, 5);
+            items = new Item[3] {damageUp, healthPotion, healthUp};
         }
 
         public void Draw()

@@ -9,10 +9,16 @@ namespace Text_Based_RPG
     internal class EnemyManager
     {
         Enemy[] enemies;
-        
-        public EnemyManager(Enemy[] enemies)
+        public EvilClone clone;
+        public EvilPixie pixie;
+        public NormalSlime slime;
+
+        public EnemyManager()
         {
-            this.enemies = enemies;
+            clone = new EvilClone(19, 19, 19, 19);
+            pixie = new EvilPixie(6, 16, 6, 16);
+            slime = new NormalSlime(54, 18, 54, 18);
+            enemies = new Enemy[3] {clone, pixie, slime};
         }
 
         public void Update()
