@@ -15,7 +15,11 @@ namespace Text_Based_RPG
         public static EvilPixie pixie = new EvilPixie(6, 16, 6, 16);
         public static NormalSlime slime = new NormalSlime(54, 18, 54, 18);
         public static EnemyManager enemyManager = new EnemyManager(new Enemy[] {clone, pixie, slime});
-        public static Player player = new Player(enemyManager);
+        public static DamageUp damageUp = new DamageUp(16, 14, player, 5);
+        public static HealthPotion healthPotion = new HealthPotion(74, 16, player, 5);
+        public static HealthUp healthUp = new HealthUp(77, 16, player, 5);
+        public static ItemManager itemManager = new ItemManager(new Item[] {damageUp, healthUp, healthPotion});
+        public static Player player = new Player(enemyManager, itemManager);
 
 
         public GameManager ()
@@ -32,9 +36,8 @@ namespace Text_Based_RPG
             scale = 1;
             map.DrawMap(scale);
             player.Draw();
-            clone.Draw();
-            pixie.Draw();
-            slime.Draw();
+            itemManager.Draw();
+            enemyManager.Draw();
             Console.CursorVisible = false;
 
             // game loop
@@ -50,14 +53,11 @@ namespace Text_Based_RPG
 
                 // update
                 player.Update(input);
-                clone.Update();
-                pixie.Update();
-                slime.Update();
+                enemyManager.Update();
 
                 // draw
-                clone.Draw();
-                pixie.Draw();
-                slime.Draw();
+                itemManager.Draw();
+                enemyManager.Draw();
                 player.Draw();
             }
         }

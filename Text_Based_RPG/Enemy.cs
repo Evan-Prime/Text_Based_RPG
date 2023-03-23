@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class Enemy : GameCharacter
+    abstract class Enemy : GameCharacter
     {
-        Random random = new Random();
         public int moveAt;
         public int moveCounter;
 
@@ -18,45 +17,7 @@ namespace Text_Based_RPG
             this.moveAt = moveAt;
         }
 
-        public virtual void Update()
-        {
-            // read user input
-            tempX = x;
-            tempY = y;
-            
-            if (health > 0 && MoveCheck() == true)
-            {
-                switch (random.Next(0, 4))
-                {
-                    case 0:
-                        if ((GameManager.map.FloorCheck(x, y - 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false)
-                        {
-                            y--;
-                        }
-                        break;
-                    case 1:
-                        if ((GameManager.map.FloorCheck(x, y + 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false)
-                        {
-                            y++;
-                        }
-                        break;
-                    case 2:
-                        if ((GameManager.map.FloorCheck(x - 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false)
-                        {
-                            x--;
-                        }
-                        break;
-                    case 3:
-                        if ((GameManager.map.FloorCheck(x + 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false)
-                        {
-                            x++;
-                        }
-                        break;
-                }
-            }
-
-            moveCounter++;
-        }
+        public abstract void Update();
 
         public void Draw()
         {
@@ -64,11 +25,6 @@ namespace Text_Based_RPG
             {
                 base.Draw();
             }
-        }
-
-        public void TakeDamage(int damageValue)
-        {
-            base.TakeDamage(damageValue);
         }
 
         public bool MoveCheck()

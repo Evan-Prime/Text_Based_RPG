@@ -8,11 +8,27 @@ namespace Text_Based_RPG
 {
     internal class EnemyManager
     {
-        Enemy[] enemies = new Enemy[3];
+        Enemy[] enemies;
         
         public EnemyManager(Enemy[] enemies)
         {
             this.enemies = enemies;
+        }
+
+        public void Update()
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].Update();
+            }
+        }
+
+        public void Draw()
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i].Draw();
+            }
         }
 
         public bool IsAnyoneHere (int targetX, int targetY, int damage)
