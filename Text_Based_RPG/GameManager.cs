@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         static int scale;
         public static Map map = new Map();
         public static EnemyManager enemyManager = new EnemyManager();
-        public static Player player = new Player(enemyManager);
+        public static Player player = new Player();
         public static ItemManager itemManager = new ItemManager(player);
         
 
@@ -20,6 +20,7 @@ namespace Text_Based_RPG
         public GameManager ()
         {
             player.SetItemManager(itemManager);
+            player.SetEnemyManager(enemyManager);
         }
 
         public void Run()

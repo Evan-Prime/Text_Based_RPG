@@ -12,9 +12,8 @@ namespace Text_Based_RPG
         ItemManager itemManager;
         public int maxHealth;
 
-        public Player(EnemyManager enemyManager, int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, damage, icon)
+        public Player(int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, damage, icon)
         {
-            this.enemyManager = enemyManager;
             maxHealth = health;
         }
 
@@ -45,6 +44,11 @@ namespace Text_Based_RPG
         public void SetItemManager(ItemManager itemManager)
         {
             this.itemManager = itemManager;
+        }
+
+        public void SetEnemyManager(EnemyManager enemyManager)
+        {
+            this.enemyManager = enemyManager;
         }
     }
 }
