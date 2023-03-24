@@ -8,17 +8,50 @@ namespace Text_Based_RPG
 {
     internal class EnemyManager
     {
-        Enemy[] enemies;
+        Enemy[] enemies = new Enemy[31];
         public EvilClone clone;
         public EvilPixie pixie;
         public NormalSlime slime;
+        public BossSlime bossSlime;
+        public Enemy attackedLast;
+        int x;
+        int y;
 
         public EnemyManager()
         {
-            clone = new EvilClone(19, 19, 19, 19);
-            pixie = new EvilPixie(6, 16, 6, 16);
-            slime = new NormalSlime(54, 18, 54, 18);
-            enemies = new Enemy[3] {clone, pixie, slime};
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                x = Settings.RandomNum(15,115);
+                y = Settings.RandomNum(1, 19);
+                while (GameManager.map.FloorCheck(x, y) == false || IsAnyoneHere(x, y, 0) == true)
+                {
+                    x = Settings.RandomNum(15, 115);
+                    y = Settings.RandomNum(1, 19);
+                }
+                if (i == 0)
+                {
+                    bossSlime = new BossSlime(107, 2, 107, 2);
+                    enemies[i] = bossSlime;
+                }
+                if (i >= 1 && i <= 25)
+                {
+                    pixie = new EvilPixie(x, y, x, y);
+                    enemies[i] = pixie;
+                }
+                if (i >= 26 && i <= 28)
+                {
+                    slime = new NormalSlime(x, y, x, y);
+                    enemies[i] = slime;
+                }
+                if (i >= 29 && i <= 30)
+                {
+                    clone = new EvilClone(x, y, x, y);
+                    enemies[i] = clone;
+                }
+            }
+
+
+
         }
 
         public void Update()
@@ -41,8 +74,17 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i < enemies.Length; i++)
             {
+                if (enemies[i] == null)
+                {
+                    return false;
+                }
+
                 if (enemies[i].AmIHere(targetX, targetY, damage) == true)
                 {
+                    if (damage > 0)
+                    {
+                        attackedLast = enemies[i];
+                    }
                     return true;
                 }
             }

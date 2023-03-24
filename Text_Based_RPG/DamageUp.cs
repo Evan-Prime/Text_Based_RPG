@@ -15,7 +15,7 @@ namespace Text_Based_RPG
             this.damageValue = damageValue;
         }
 
-        public override void PickUpEffect()
+        public override void Use()
         {
             player.damage += damageValue;
             active = false;

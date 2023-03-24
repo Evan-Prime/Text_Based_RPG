@@ -16,7 +16,7 @@ namespace Text_Based_RPG
 
         }
 
-        public override void PickUpEffect()
+        public override void Use()
         {
             if (player.health < player.maxHealth)
             {

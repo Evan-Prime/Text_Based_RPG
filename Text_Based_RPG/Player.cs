@@ -10,11 +10,10 @@ namespace Text_Based_RPG
     {
         EnemyManager enemyManager;
         ItemManager itemManager;
-        public int maxHealth;
 
-        public Player(int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, damage, icon)
+        public Player(int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon)
         {
-            maxHealth = health;
+            
         }
 
         public void Update(ConsoleKeyInfo input)

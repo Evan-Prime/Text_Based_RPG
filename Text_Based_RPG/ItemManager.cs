@@ -8,17 +8,44 @@ namespace Text_Based_RPG
 {
     internal class ItemManager
     {
-        Item[] items;
+        Item[] items = new Item[30];
         public DamageUp damageUp;
         public HealthPotion healthPotion;
         public HealthUp healthUp;
+        int x;
+        int y;
 
-        public ItemManager(Player player)
+        public ItemManager(Player player, EnemyManager enemyManager)
         {
-            damageUp = new DamageUp(16, 14, player, 5);
-            healthPotion = new HealthPotion(74, 16, player, 5);
-            healthUp = new HealthUp(77, 16, player, 5);
-            items = new Item[3] {damageUp, healthPotion, healthUp};
+            //damageUp = new DamageUp(16, 14, player, 5);
+            //healthPotion = new HealthPotion(74, 16, player, 5);
+            //healthUp = new HealthUp(77, 16, player, 5);
+            //[3] {damageUp, healthPotion, healthUp};
+            for (int i = 0; i < items.Length; i++)
+            {
+                x = Settings.RandomNum(15, 115);
+                y = Settings.RandomNum(1, 19);
+                while (GameManager.map.FloorCheck(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y) == true)
+                {
+                    x = Settings.RandomNum(15, 115);
+                    y = Settings.RandomNum(1, 19);
+                }
+                if (i <= 24)
+                {
+                    healthPotion = new HealthPotion(x, y, player, 5);
+                    items[i] = healthPotion;
+                }
+                if (i >= 25 && i <= 27)
+                {
+                    healthUp = new HealthUp(x, y, player, 5);
+                    items[i] = healthUp;
+                }
+                if (i >= 28 && i <= 29)
+                {
+                    damageUp = new DamageUp(x, y, player, 5);
+                    items[i] = damageUp;
+                }
+            }
         }
 
         public void Draw()
@@ -33,6 +60,11 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i < items.Length; i++)
             {
+                if (items[i] == null)
+                {
+                    return false;
+                }
+
                 if (items[i].AmIHere(targetX, targetY) == true)
                 {
                     return true;

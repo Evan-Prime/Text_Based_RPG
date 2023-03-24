@@ -11,7 +11,7 @@ namespace Text_Based_RPG
 
         bool moveUp = true;
 
-        public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 2, '*', 1)
+        public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 5, 2, '*', 1)
         {
 
         }
@@ -23,7 +23,7 @@ namespace Text_Based_RPG
 
             if (health > 0 && MoveCheck() == true)
             {
-                if (GameManager.map.FloorCheck(x, y - 1) == true && moveUp == true && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false)
+                if (GameManager.map.FloorCheck(x, y - 1) == true && moveUp == true && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y - 1) == false)
                 {
                     y--;
                 }
@@ -32,7 +32,7 @@ namespace Text_Based_RPG
                     moveUp = false;
                 }
 
-                if (GameManager.map.FloorCheck(x, y + 1) == true && moveUp == false && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false)
+                if (GameManager.map.FloorCheck(x, y + 1) == true && moveUp == false && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y + 1) == false)
                 {
                     y++;
                 }

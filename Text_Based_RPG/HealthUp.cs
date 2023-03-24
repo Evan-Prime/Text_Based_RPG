@@ -15,9 +15,15 @@ namespace Text_Based_RPG
             this.healthValue = healthValue;
         }
 
-        public override void PickUpEffect()
+        public override void Use()
         {
-            player.health += healthValue;
+            int formerMaxHealth = player.maxHealth;
+            player.maxHealth += healthValue;
+            if(player.health == formerMaxHealth)
+            {
+                player.health = player.maxHealth;
+            }
+            
             active = false;
         }
     }

@@ -13,16 +13,18 @@ namespace Text_Based_RPG
         public int tempX;
         public int tempY;
         public int health;
+        public int maxHealth;
         public int damage;
         public char icon;
 
-        public GameCharacter (int x, int y, int tempX, int tempY, int health, int damage, char icon)
+        public GameCharacter (int x, int y, int tempX, int tempY, int health, int maxHealth, int damage, char icon)
         {
             this.x = x;
             this.y = y;
             this.tempX = tempX;
             this.tempY = tempY;
             this.health = health;
+            this.maxHealth = maxHealth;
             this.damage = damage;
             this.icon = icon;
         }

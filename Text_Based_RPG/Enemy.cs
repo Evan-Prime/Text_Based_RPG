@@ -11,7 +11,7 @@ namespace Text_Based_RPG
         public int moveAt;
         public int moveCounter;
 
-        public Enemy (int x =3, int y = 9, int tempX = 3, int tempY = 9, int health = 10, int damage = 5, char icon = '☻', int moveAt = 2) : base (x, y, tempX, tempY, health, damage, icon)
+        public Enemy (int x =3, int y = 9, int tempX = 3, int tempY = 9, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☻', int moveAt = 2) : base (x, y, tempX, tempY, health, maxHealth, damage, icon)
         {
             moveCounter = 0;
             this.moveAt = moveAt;

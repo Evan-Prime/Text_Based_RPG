@@ -23,7 +23,7 @@ namespace Text_Based_RPG
             this.player = player;
         }
 
-        public abstract void PickUpEffect();
+        public abstract void Use();
 
         public bool AmIHere(int targetX, int targetY)
         {
@@ -32,7 +32,7 @@ namespace Text_Based_RPG
             if (targetY == y && targetX == x && active == true)
             {
                 item = true;
-                PickUpEffect();
+                Use();
                 if (active == false)
                 {
                     Console.SetCursorPosition(x, y);
