@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         bool moveLeft = true;
 
-        public NormalSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 15, 15, 4, 'o', 3)
+        public NormalSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 15, 15, 4, 'o', 4, "Slime")
         {
 
         }

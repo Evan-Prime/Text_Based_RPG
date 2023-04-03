@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     internal class BossSlime: Enemy
     {
-        public BossSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 100, 100, 10, '0', 2)
+        public BossSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 100, 100, 10, '0', 4, "Boss Slime")
         {
 
         }

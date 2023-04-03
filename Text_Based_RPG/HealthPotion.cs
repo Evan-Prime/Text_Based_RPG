@@ -25,6 +25,7 @@ namespace Text_Based_RPG
                 if (player.health > player.maxHealth)
                 {
                     player.health = player.maxHealth;
+
                 }
 
                 active = false;

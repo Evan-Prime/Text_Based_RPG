@@ -17,10 +17,6 @@ namespace Text_Based_RPG
 
         public ItemManager(Player player, EnemyManager enemyManager)
         {
-            //damageUp = new DamageUp(16, 14, player, 5);
-            //healthPotion = new HealthPotion(74, 16, player, 5);
-            //healthUp = new HealthUp(77, 16, player, 5);
-            //[3] {damageUp, healthPotion, healthUp};
             for (int i = 0; i < items.Length; i++)
             {
                 x = Settings.RandomNum(15, 115);

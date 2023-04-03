@@ -33,17 +33,17 @@ namespace Text_Based_RPG
                     bossSlime = new BossSlime(107, 2, 107, 2);
                     enemies[i] = bossSlime;
                 }
-                if (i >= 1 && i <= 25)
+                else if (i > 0 && i < 26)
                 {
                     pixie = new EvilPixie(x, y, x, y);
                     enemies[i] = pixie;
                 }
-                if (i >= 26 && i <= 28)
+                else if (i >= 26 && i < 29)
                 {
                     slime = new NormalSlime(x, y, x, y);
                     enemies[i] = slime;
                 }
-                if (i >= 29 && i <= 30)
+                else //if (i >= 29 && i <= 30)
                 {
                     clone = new EvilClone(x, y, x, y);
                     enemies[i] = clone;

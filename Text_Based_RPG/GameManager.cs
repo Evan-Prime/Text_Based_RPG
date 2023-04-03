@@ -9,18 +9,26 @@ namespace Text_Based_RPG
     internal class GameManager
     {
         static bool gameOver; // true or false
-        public static Map map = new Map();
-        public static EnemyManager enemyManager = new EnemyManager();
-        public static Player player = new Player();
-        public static ItemManager itemManager = new ItemManager(player, enemyManager);
-        public static HUD hud = new HUD(player, enemyManager);
+        public static Map map;
+        public static EnemyManager enemyManager;
+        public static Player player;
+        public static ItemManager itemManager;
+        public static HUD hud;
         
 
 
         public GameManager ()
         {
+            map = new Map();
+            enemyManager = new EnemyManager();
+            player = new Player();
+            itemManager = new ItemManager(player, enemyManager);
+            hud = new HUD();
+
             player.SetItemManager(itemManager);
             player.SetEnemyManager(enemyManager);
+            hud.SetPlayer(player);
+            hud.SetEnemyManager(enemyManager);
         }
 
         public void Run()
@@ -28,8 +36,8 @@ namespace Text_Based_RPG
             // initializing
             gameOver = false;
             player.Draw();
-            itemManager.Draw();
             enemyManager.Draw();
+            itemManager.Draw();
             hud.Update();
             Console.CursorVisible = false;
 

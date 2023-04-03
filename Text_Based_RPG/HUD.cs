@@ -11,29 +11,39 @@ namespace Text_Based_RPG
         Player player;
         EnemyManager enemyManager;
 
-        public HUD (Player player, EnemyManager enemyManager)
+        public HUD ()
         {
-            this.player = player;
-            this.enemyManager = enemyManager;
+            
         }
 
         public void Update()
         {
             Console.SetCursorPosition(0, 21);
-            Console.WriteLine("Player:");
-            Console.WriteLine();
-            Console.WriteLine("Health: " + player.health + "/" + player.maxHealth);
-            Console.WriteLine();
-            Console.WriteLine("Damage: " + player.damage);
-            Console.WriteLine();
-            Console.WriteLine("Enemy:");
-            Console.WriteLine();
+            Console.WriteLine("Player: " + "Ramiel");
+            Console.SetCursorPosition(0, 23);
+            Console.WriteLine("Health: " + player.health + "/" + player.maxHealth + "   ");
+            Console.SetCursorPosition(0, 25);
+            Console.WriteLine("Damage: " + player.damage + "   ");
+
             if (enemyManager.attackedLast != null)
             {
-                Console.WriteLine("Health: " + enemyManager.attackedLast.health + "/" + enemyManager.attackedLast.maxHealth + " ");
-                Console.WriteLine();
-                Console.WriteLine("Damage: " + enemyManager.attackedLast.damage + " ");
+                Console.SetCursorPosition(21, 21);
+                Console.WriteLine("Enemy: "/* + enemyManager.attackedLast.name + "   "*/);
+                Console.SetCursorPosition(21, 23);
+                Console.WriteLine("Health: " + enemyManager.attackedLast.health + "/" + enemyManager.attackedLast.maxHealth + "   ");
+                Console.SetCursorPosition(21, 25);
+                Console.WriteLine("Damage: " + enemyManager.attackedLast.damage + "   ");
             }
+        }
+
+        public void SetPlayer(Player player)
+        {
+            this.player = player;
+        }
+
+        public void SetEnemyManager(EnemyManager enemyManager)
+        {
+            this.enemyManager = enemyManager;
         }
     }
 }

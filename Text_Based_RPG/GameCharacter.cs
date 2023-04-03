@@ -41,9 +41,12 @@ namespace Text_Based_RPG
         }
         public void Draw()
         {
-            GameManager.map.Drawtile(tempX, tempY);
-            Console.SetCursorPosition(x, y);
-            Console.Write(icon);
+            if (health > 0)
+            {
+                GameManager.map.Drawtile(tempX, tempY);
+                Console.SetCursorPosition(x, y);
+                Console.Write(icon);
+            }
         }
 
         public bool AmIHere (int targetX, int targetY, int damage)

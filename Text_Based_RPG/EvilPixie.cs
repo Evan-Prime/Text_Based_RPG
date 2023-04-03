@@ -11,7 +11,7 @@ namespace Text_Based_RPG
 
         bool moveUp = true;
 
-        public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 5, 2, '*', 1)
+        public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 5, 2, '*', 1, "Evil Pixie")
         {
 
         }
