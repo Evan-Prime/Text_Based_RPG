@@ -25,6 +25,15 @@ namespace Text_Based_RPG
                 for (int x = 0; x < mapTotal[y].Length; x++)
                 {
                     map[y, x] = mapTotal[y][x];
+                    switch(map[y, x])
+                    {
+                        case '█':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case ' ':
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            break;
+                    }
                     Console.Write(map[y, x]);
                 }
                 Console.WriteLine();

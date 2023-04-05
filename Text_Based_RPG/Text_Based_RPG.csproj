@@ -54,6 +54,7 @@
     <Compile Include="HealthPotion.cs" />
     <Compile Include="HealthUp.cs" />
     <Compile Include="HUD.cs" />
+    <Compile Include="InputManager.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
     <Compile Include="Map.cs" />

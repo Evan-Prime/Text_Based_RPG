@@ -23,19 +23,19 @@ namespace Text_Based_RPG
             tempY = y;
             if (health > 0)
             {
-                if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && GameManager.map.FloorCheck(x, y - 1) == true && enemyManager.IsAnyoneHere(x, y - 1, damage) == false && itemManager.IsAnyItemHere(x, y - 1) == false)
+                if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && GameManager.map.FloorCheck(x, y - 1) == true && enemyManager.IsAnyoneHere(x, y - 1, damage) == false && itemManager.IsAnyItemHere(x, y - 1, true) == false)
                 {
                     y--;
                 }
-                else if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && GameManager.map.FloorCheck(x, y + 1) == true && enemyManager.IsAnyoneHere(x, y + 1, damage) == false && itemManager.IsAnyItemHere(x, y + 1) == false)
+                else if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && GameManager.map.FloorCheck(x, y + 1) == true && enemyManager.IsAnyoneHere(x, y + 1, damage) == false && itemManager.IsAnyItemHere(x, y + 1, true) == false)
                 {
                     y++;
                 }
-                else if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && GameManager.map.FloorCheck(x - 1, y) == true && enemyManager.IsAnyoneHere(x - 1, y, damage) == false && itemManager.IsAnyItemHere(x - 1, y) == false)
+                else if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && GameManager.map.FloorCheck(x - 1, y) == true && enemyManager.IsAnyoneHere(x - 1, y, damage) == false && itemManager.IsAnyItemHere(x - 1, y, true) == false)
                 {
                     x--;
                 }
-                else if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && GameManager.map.FloorCheck(x + 1, y) == true && enemyManager.IsAnyoneHere(x + 1, y, damage) == false && itemManager.IsAnyItemHere(x + 1, y) == false)
+                else if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && GameManager.map.FloorCheck(x + 1, y) == true && enemyManager.IsAnyoneHere(x + 1, y, damage) == false && itemManager.IsAnyItemHere(x + 1, y, true) == false)
                 {
                     x++;
                 }

@@ -14,5 +14,10 @@ namespace Text_Based_RPG
         {
             return random.Next(min,max);
         }
+
+        static public void CursorVisablityFalse()
+        {
+            Console.CursorVisible = false;
+        }
     }
 }

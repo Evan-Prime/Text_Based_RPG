@@ -22,7 +22,7 @@ namespace Text_Based_RPG
 
             if (health > 0 && MoveCheck() == true)
             {
-                if (GameManager.map.FloorCheck(x - 1, y) == true && moveLeft == true && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x - 1, y) == false)
+                if (GameManager.map.FloorCheck(x - 1, y) == true && moveLeft == true && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x - 1, y, false) == false)
                 {
                     x--;
                 }
@@ -31,7 +31,7 @@ namespace Text_Based_RPG
                     moveLeft = false;
                 }
 
-                if (GameManager.map.FloorCheck(x + 1, y) == true && moveLeft == false && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x + 1, y) == false)
+                if (GameManager.map.FloorCheck(x + 1, y) == true && moveLeft == false && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x + 1, y, false) == false)
                 {
                     x++;
                 }

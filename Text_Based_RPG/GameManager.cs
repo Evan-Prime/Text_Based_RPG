@@ -8,7 +8,6 @@ namespace Text_Based_RPG
 {
     internal class GameManager
     {
-        static bool gameOver; // true or false
         public static Map map;
         public static EnemyManager enemyManager;
         public static Player player;
@@ -34,26 +33,21 @@ namespace Text_Based_RPG
         public void Run()
         {
             // initializing
-            gameOver = false;
+            InputManager.IsGameRunning(false);
             player.Draw();
             enemyManager.Draw();
             itemManager.Draw();
             hud.Update();
-            Console.CursorVisible = false;
+            Settings.CursorVisablityFalse();
 
             // game loop
-            while (gameOver == false)
+            while (InputManager.IsGameRunning(false) == false)
             {
 
-                Console.CursorVisible = false;
-                ConsoleKeyInfo input = Console.ReadKey(true);
-                if (input.Key == ConsoleKey.Escape)
-                {
-                    gameOver = true;
-                }
 
                 // update
-                player.Update(input);
+                InputManager.Update();
+                player.Update(InputManager.input);
                 enemyManager.Update();
                 hud.Update();
 

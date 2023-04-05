@@ -21,7 +21,7 @@ namespace Text_Based_RPG
             {
                 x = Settings.RandomNum(15, 115);
                 y = Settings.RandomNum(1, 19);
-                while (GameManager.map.FloorCheck(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y) == true)
+                while (GameManager.map.FloorCheck(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
                 {
                     x = Settings.RandomNum(15, 115);
                     y = Settings.RandomNum(1, 19);
@@ -52,7 +52,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public bool IsAnyItemHere(int targetX, int targetY)
+        public bool IsAnyItemHere(int targetX, int targetY, bool IsPlayer)
         {
             for (int i = 0; i < items.Length; i++)
             {
@@ -61,7 +61,7 @@ namespace Text_Based_RPG
                     return false;
                 }
 
-                if (items[i].AmIHere(targetX, targetY) == true)
+                if (items[i].AmIHere(targetX, targetY, IsPlayer) == true)
                 {
                     return true;
                 }

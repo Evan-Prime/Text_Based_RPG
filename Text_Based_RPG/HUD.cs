@@ -18,20 +18,22 @@ namespace Text_Based_RPG
 
         public void Update()
         {
-            Console.SetCursorPosition(0, 21);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(1, 23);
             Console.WriteLine("Player: " + "Ramiel");
-            Console.SetCursorPosition(0, 23);
+            Console.SetCursorPosition(1, 25);
             Console.WriteLine("Health: " + player.health + "/" + player.maxHealth + "   ");
-            Console.SetCursorPosition(0, 25);
+            Console.SetCursorPosition(1, 27);
             Console.WriteLine("Damage: " + player.damage + "   ");
 
             if (enemyManager.attackedLast != null)
             {
-                Console.SetCursorPosition(21, 21);
-                Console.WriteLine("Enemy: "/* + enemyManager.attackedLast.name + "   "*/);
-                Console.SetCursorPosition(21, 23);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(22, 23);
+                Console.WriteLine("Enemy: "+ enemyManager.attackedLast.name + "     ");
+                Console.SetCursorPosition(22, 25);
                 Console.WriteLine("Health: " + enemyManager.attackedLast.health + "/" + enemyManager.attackedLast.maxHealth + "   ");
-                Console.SetCursorPosition(21, 25);
+                Console.SetCursorPosition(22, 27);
                 Console.WriteLine("Damage: " + enemyManager.attackedLast.damage + "   ");
             }
         }

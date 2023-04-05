@@ -41,12 +41,38 @@ namespace Text_Based_RPG
         }
         public void Draw()
         {
+            switch (icon)
+            {
+                case 'o':
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case '0':
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    break;
+                case '*':
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    break;
+                case '☻':
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    break;
+                case '☺':
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+            }
+
             if (health > 0)
             {
-                GameManager.map.Drawtile(tempX, tempY);
+                if (GameManager.enemyManager.IsAnyoneHere(tempX, tempY, 0) == false)
+                {
+                    GameManager.map.Drawtile(tempX, tempY);
+                }
                 Console.SetCursorPosition(x, y);
                 Console.Write(icon);
             }
+
         }
 
         public bool AmIHere (int targetX, int targetY, int damage)

@@ -25,14 +25,18 @@ namespace Text_Based_RPG
 
         public abstract void Use();
 
-        public bool AmIHere(int targetX, int targetY)
+        public bool AmIHere(int targetX, int targetY, bool IsPlayer)
         {
 
             bool item = false;
             if (targetY == y && targetX == x && active == true)
             {
                 item = true;
-                Use();
+                if (IsPlayer == true)
+                {
+                    Use();
+                }
+                
                 if (active == false)
                 {
                     Console.SetCursorPosition(x, y);
@@ -44,6 +48,22 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
+            switch (icon)
+            {
+                case '+':
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case '♥':
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case '^':
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    break;
+            }
+
             if (active == true)
             {
                 Console.SetCursorPosition(x, y);
