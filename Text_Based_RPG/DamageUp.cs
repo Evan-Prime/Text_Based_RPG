@@ -10,9 +10,9 @@ namespace Text_Based_RPG
     {
         int damageValue;
 
-        public DamageUp(int x, int y, Player player, int damageValue) : base(x, y, '^', true, player)
+        public DamageUp(int x, int y, Player player, int effectValue) : base(x, y, '^', true, "Damage-Up", effectValue, player)
         {
-            this.damageValue = damageValue;
+            this.damageValue = effectValue;
         }
 
         public override void Use()

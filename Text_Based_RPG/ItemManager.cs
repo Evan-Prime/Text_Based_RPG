@@ -8,20 +8,24 @@ namespace Text_Based_RPG
 {
     internal class ItemManager
     {
+        Player player;
         Item[] items = new Item[30];
         public DamageUp damageUp;
         public HealthPotion healthPotion;
         public HealthUp healthUp;
+        public Item usedLast;
+        public bool notUsed;
         int x;
         int y;
 
         public ItemManager(Player player, EnemyManager enemyManager)
         {
+            this.player = player;
             for (int i = 0; i < items.Length; i++)
             {
                 x = Settings.RandomNum(15, 115);
                 y = Settings.RandomNum(1, 19);
-                while (GameManager.map.FloorCheck(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
+                while (GameManager.map.IsFloorHere(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
                 {
                     x = Settings.RandomNum(15, 115);
                     y = Settings.RandomNum(1, 19);
@@ -63,6 +67,18 @@ namespace Text_Based_RPG
 
                 if (items[i].AmIHere(targetX, targetY, IsPlayer) == true)
                 {
+                    if (IsPlayer == true)
+                    {
+                        usedLast = items[i];
+                        if (player.health == player.maxHealth)
+                        {
+                            notUsed = true;
+                        }
+                        else
+                        {
+                            notUsed = false;
+                        }
+                    }
                     return true;
                 }
             }

@@ -28,6 +28,7 @@ namespace Text_Based_RPG
             player.SetEnemyManager(enemyManager);
             hud.SetPlayer(player);
             hud.SetEnemyManager(enemyManager);
+            hud.SetItemManager(itemManager);
         }
 
         public void Run()

@@ -12,14 +12,18 @@ namespace Text_Based_RPG
         public int y;
         public char icon;
         public bool active;
+        public string name;
+        public int effectValue;
         public Player player;
 
-        public Item(int x, int y, char icon, bool active, Player player)
+        public Item(int x, int y, char icon, bool active, string name, int effectValue, Player player)
         {
             this.x = x;
             this.y = y;
             this.icon = icon;
             this.active = active;
+            this.name = name;
+            this.effectValue = effectValue;
             this.player = player;
         }
 

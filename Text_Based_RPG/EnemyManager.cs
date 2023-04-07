@@ -23,7 +23,7 @@ namespace Text_Based_RPG
             {
                 x = Settings.RandomNum(15,115);
                 y = Settings.RandomNum(1, 19);
-                while (GameManager.map.FloorCheck(x, y) == false || IsAnyoneHere(x, y, 0) == true)
+                while (GameManager.map.IsFloorHere(x, y) == false || IsAnyoneHere(x, y, 0) == true)
                 {
                     x = Settings.RandomNum(15, 115);
                     y = Settings.RandomNum(1, 19);

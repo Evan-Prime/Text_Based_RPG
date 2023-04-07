@@ -28,6 +28,7 @@ namespace Text_Based_RPG
             this.damage = damage;
             this.icon = icon;
         }
+
         public void TakeDamage(int hp)
         {
             if (hp < 0) return;
@@ -39,6 +40,7 @@ namespace Text_Based_RPG
                 Console.Write(' ');
             }
         }
+
         public void Draw()
         {
             switch (icon)

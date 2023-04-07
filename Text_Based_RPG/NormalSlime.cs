@@ -8,7 +8,9 @@ namespace Text_Based_RPG
 {
     internal class NormalSlime: Enemy
     {
-        bool moveLeft = true;
+        private int targetY;
+        private int targetX;
+        private bool moveLeft = true;
 
         public NormalSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 15, 15, 4, 'o', 4, "Slime")
         {
@@ -20,24 +22,76 @@ namespace Text_Based_RPG
             tempX = x;
             tempY = y;
 
-            if (health > 0 && MoveCheck() == true)
+            if (health > 0)
             {
-                if (GameManager.map.FloorCheck(x - 1, y) == true && moveLeft == true && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x - 1, y, false) == false)
+                if (MoveCheck() == true)
                 {
-                    x--;
-                }
-                else
-                {
-                    moveLeft = false;
-                }
+                    switch (moveLeft)
+                    {
+                        case true:
+                            targetY = y;
+                            targetX = x - 1;
+                            break;
+                        case false:
+                            targetY = y;
+                            targetX = x + 1;
+                            break;
+                    }
 
-                if (GameManager.map.FloorCheck(x + 1, y) == true && moveLeft == false && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x + 1, y, false) == false)
-                {
-                    x++;
-                }
-                else
-                {
-                    moveLeft = true;
+                    if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                    {
+                        if (moveLeft == true)
+                        {
+                            moveLeft = false;
+                        }
+                        else if (moveLeft == false)
+                        {
+                            moveLeft = true;
+                        }
+                        return;
+                    }
+
+                    if (GameManager.enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
+                    {
+                        if (moveLeft == true)
+                        {
+                            moveLeft = false;
+                        }
+                        else if (moveLeft == false)
+                        {
+                            moveLeft = true;
+                        }
+                        return;
+                    }
+
+                    if (GameManager.player.AmIHere(targetX, targetY, damage) == true)
+                    {
+                        if (moveLeft == true)
+                        {
+                            moveLeft = false;
+                        }
+                        else if (moveLeft == false)
+                        {
+                            moveLeft = true;
+                        }
+                        return;
+                    }
+
+                    if (GameManager.itemManager.IsAnyItemHere(targetX, targetY, false) == true)
+                    {
+                        if (moveLeft == true)
+                        {
+                            moveLeft = false;
+                        }
+                        else if (moveLeft == false)
+                        {
+                            moveLeft = true;
+                        }
+                        return;
+                    }
+
+                    y = targetY;
+                    x = targetX;
                 }
             }
 

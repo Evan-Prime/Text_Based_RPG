@@ -48,14 +48,14 @@ namespace Text_Based_RPG
             Console.Write(map[y,x]);
         }
 
-        public bool FloorCheck (int x, int y)
+        public bool IsFloorHere (int x, int y)
         {
-            bool wall = false;
+            bool floor = false;
             if (map[y,x] == ' ')
             {
-                wall = true;
+                floor = true;
             }
-            return wall;
+            return floor;
         }
     }
 }

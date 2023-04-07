@@ -8,8 +8,9 @@ namespace Text_Based_RPG
 {
     internal class EvilPixie: Enemy
     {
-
-        bool moveUp = true;
+        private int targetY;
+        private int targetX;
+        private bool moveUp = true;
 
         public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 5, 2, '*', 1, "Evil Pixie")
         {
@@ -21,26 +22,80 @@ namespace Text_Based_RPG
             tempX = x;
             tempY = y;
 
-            if (health > 0 && MoveCheck() == true)
+            if (health > 0)
             {
-                if (GameManager.map.FloorCheck(x, y - 1) == true && moveUp == true && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y - 1, false) == false)
+                if (MoveCheck() == true)
                 {
-                    y--;
-                }
-                else
-                {
-                    moveUp = false;
-                }
+                    switch (moveUp)
+                    {
+                        case true:
+                            targetY = y - 1;
+                            targetX = x;
+                            break;
+                        case false:
+                            targetY = y + 1;
+                            targetX = x;
+                            break;
+                    }
+                    
+                    if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                    {
+                        if (moveUp == true)
+                        {
+                            moveUp = false;
+                        }
+                        else if (moveUp == false)
+                        {
+                            moveUp = true;
+                        }
+                        return;
+                    }
 
-                if (GameManager.map.FloorCheck(x, y + 1) == true && moveUp == false && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y + 1, false) == false)
-                {
-                    y++;
-                }
-                else
-                {
-                    moveUp = true;
+                    if (GameManager.enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
+                    {
+                        if (moveUp == true)
+                        {
+                            moveUp = false;
+                        }
+                        else if (moveUp == false)
+                        {
+                            moveUp = true;
+                        }
+                        return;
+                    }
+
+                    if (GameManager.player.AmIHere(targetX, targetY, damage) == true)
+                    {
+                        if (moveUp == true)
+                        {
+                            moveUp = false;
+                        }
+                        else if (moveUp == false)
+                        {
+                            moveUp = true;
+                        }
+                        return;
+                    }
+
+                    if (GameManager.itemManager.IsAnyItemHere(targetX, targetY, false) == true)
+                    {
+                        if (moveUp == true)
+                        {
+                            moveUp = false;
+                        }
+                        else if (moveUp == false)
+                        {
+                            moveUp = true;
+                        }
+                        return;
+                    }
+
+                    y = targetY;
+                    x = targetX;
                 }
             }
+
+            
 
             moveCounter++;
         }

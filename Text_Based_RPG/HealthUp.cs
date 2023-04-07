@@ -10,9 +10,9 @@ namespace Text_Based_RPG
     {
         int healthValue;
 
-        public HealthUp(int x, int y, Player player, int healthValue) : base(x, y, '♥', true, player)
+        public HealthUp(int x, int y, Player player, int effectValue) : base(x, y, '♥', true, "Health-Up", effectValue, player)
         {
-            this.healthValue = healthValue;
+            this.healthValue = effectValue;
         }
 
         public override void Use()

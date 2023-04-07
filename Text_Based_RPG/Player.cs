@@ -10,6 +10,8 @@ namespace Text_Based_RPG
     {
         EnemyManager enemyManager;
         ItemManager itemManager;
+        private int targetX;
+        private int targetY;
 
         public Player(int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon)
         {
@@ -23,22 +25,47 @@ namespace Text_Based_RPG
             tempY = y;
             if (health > 0)
             {
-                if ((input.Key == ConsoleKey.W || input.Key == ConsoleKey.UpArrow) && GameManager.map.FloorCheck(x, y - 1) == true && enemyManager.IsAnyoneHere(x, y - 1, damage) == false && itemManager.IsAnyItemHere(x, y - 1, true) == false)
+                switch (input.Key)
                 {
-                    y--;
+                    case ConsoleKey.W:
+                    case ConsoleKey.UpArrow:
+                        targetY = y - 1;
+                        targetX = x;
+                        break;
+                    case ConsoleKey.S:
+                    case ConsoleKey.DownArrow:
+                        targetY = y + 1;
+                        targetX = x;
+                        break;
+                    case ConsoleKey.A:
+                    case ConsoleKey.LeftArrow:
+                        targetY = y;
+                        targetX = x - 1;
+                        break;
+                    case ConsoleKey.D:
+                    case ConsoleKey.RightArrow:
+                        targetY = y;
+                        targetX = x + 1;
+                        break;
                 }
-                else if ((input.Key == ConsoleKey.S || input.Key == ConsoleKey.DownArrow) && GameManager.map.FloorCheck(x, y + 1) == true && enemyManager.IsAnyoneHere(x, y + 1, damage) == false && itemManager.IsAnyItemHere(x, y + 1, true) == false)
+
+                if (GameManager.map.IsFloorHere(targetX, targetY) == false)
                 {
-                    y++;
+                    return;
                 }
-                else if ((input.Key == ConsoleKey.A || input.Key == ConsoleKey.LeftArrow) && GameManager.map.FloorCheck(x - 1, y) == true && enemyManager.IsAnyoneHere(x - 1, y, damage) == false && itemManager.IsAnyItemHere(x - 1, y, true) == false)
+
+                if (enemyManager.IsAnyoneHere(targetX, targetY, damage) == true)
                 {
-                    x--;
+                    return;
                 }
-                else if ((input.Key == ConsoleKey.D || input.Key == ConsoleKey.RightArrow) && GameManager.map.FloorCheck(x + 1, y) == true && enemyManager.IsAnyoneHere(x + 1, y, damage) == false && itemManager.IsAnyItemHere(x + 1, y, true) == false)
+
+                if (itemManager.IsAnyItemHere(targetX, targetY, true) == true)
                 {
-                    x++;
+                    return;
                 }
+
+                y = targetY;
+                x = targetX;
             }
         }
 

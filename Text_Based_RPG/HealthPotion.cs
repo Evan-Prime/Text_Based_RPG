@@ -10,9 +10,9 @@ namespace Text_Based_RPG
     {
         int healValue;
 
-        public HealthPotion(int x, int y, Player player, int healValue) : base(x, y, '+', true, player)
+        public HealthPotion(int x, int y, Player player, int effectValue) : base(x, y, '+', true, "Health-Potion", effectValue, player)
         {
-            this.healValue = healValue;
+            this.healValue = effectValue;
 
         }
 

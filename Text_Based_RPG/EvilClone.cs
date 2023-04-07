@@ -8,6 +8,9 @@ namespace Text_Based_RPG
 {
     internal class EvilClone: Enemy
     {
+        private int targetX;
+        private int targetY;
+
         public EvilClone (int x, int y, int tempX, int tempY) : base (x, y, tempX, tempY, 10, 10, 5, '☻', 3, "Evil Clone")
         {
 
@@ -18,34 +21,52 @@ namespace Text_Based_RPG
             tempX = x;
             tempY = y;
 
-            if (health > 0 && MoveCheck() == true)
+            if (health > 0)
             {
-                switch (Settings.RandomNum(0, 4))
+                if (MoveCheck() == true)
                 {
-                    case 0:
-                        if ((GameManager.map.FloorCheck(x, y - 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y - 1, 0) == false && GameManager.player.AmIHere(x, y - 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y - 1, false) == false)
-                        {
-                            y--;
-                        }
-                        break;
-                    case 1:
-                        if ((GameManager.map.FloorCheck(x, y + 1) == true) && GameManager.enemyManager.IsAnyoneHere(x, y + 1, 0) == false && GameManager.player.AmIHere(x, y + 1, damage) == false && GameManager.itemManager.IsAnyItemHere(x, y + 1, false) == false)
-                        {
-                            y++;
-                        }
-                        break;
-                    case 2:
-                        if ((GameManager.map.FloorCheck(x - 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x - 1, y, 0) == false && GameManager.player.AmIHere(x - 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x - 1, y, false) == false)
-                        {
-                            x--;
-                        }
-                        break;
-                    case 3:
-                        if ((GameManager.map.FloorCheck(x + 1, y) == true) && GameManager.enemyManager.IsAnyoneHere(x + 1, y, 0) == false && GameManager.player.AmIHere(x + 1, y, damage) == false && GameManager.itemManager.IsAnyItemHere(x + 1, y, false) == false)
-                        {
-                            x++;
-                        }
-                        break;
+                    switch (Settings.RandomNum(0, 4))
+                    {
+                        case 0:
+                            targetY = y - 1;
+                            targetX = x;
+                            break;
+                        case 1:
+                            targetY = y + 1;
+                            targetX = x;
+                            break;
+                        case 2:
+                            targetY = y;
+                            targetX = x - 1;
+                            break;
+                        case 3:
+                            targetY = y;
+                            targetX = x + 1;
+                            break;
+                    }
+
+                    if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                    {
+                        return;
+                    }
+
+                    if (GameManager.enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
+                    {
+                        return;
+                    }
+
+                    if (GameManager.player.AmIHere(targetX, targetY, damage) == true)
+                    {
+                        return;
+                    }
+
+                    if (GameManager.itemManager.IsAnyItemHere(targetX, targetY, false) == true)
+                    {
+                        return;
+                    }
+
+                    y = targetY;
+                    x = targetX;
                 }
             }
 
