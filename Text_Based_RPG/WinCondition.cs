@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class WinCondition
+    internal static class WinCondition
     {
-        
+        static void Win()
+        {
+            Console.WriteLine("████████████");
+            Console.WriteLine("█ You Win! █");
+            Console.WriteLine("████████████");
+            Console.WriteLine("");
+            Console.WriteLine("Press the Esc key to Exit.");
+
+        }
     }
 }
