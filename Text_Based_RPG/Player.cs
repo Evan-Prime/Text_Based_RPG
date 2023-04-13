@@ -67,6 +67,10 @@ namespace Text_Based_RPG
                 y = targetY;
                 x = targetX;
             }
+            else if (health <= 0)
+            {
+                LoseCondition.Lose();
+            }
         }
 
         public void SetItemManager(ItemManager itemManager)
@@ -77,6 +81,11 @@ namespace Text_Based_RPG
         public void SetEnemyManager(EnemyManager enemyManager)
         {
             this.enemyManager = enemyManager;
+        }
+
+        public void Draw()
+        {
+            base.Draw();
         }
     }
 }

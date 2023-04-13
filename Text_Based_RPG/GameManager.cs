@@ -34,7 +34,7 @@ namespace Text_Based_RPG
         public void Run()
         {
             // initializing
-            InputManager.IsGameRunning(false);
+            InputManager.IsGameRunning(true, false);
             player.Draw();
             enemyManager.Draw();
             itemManager.Draw();
@@ -42,9 +42,8 @@ namespace Text_Based_RPG
             Settings.CursorVisablityFalse();
 
             // game loop
-            while (InputManager.IsGameRunning(false) == false)
+            while (InputManager.IsGameRunning(true, false) == true)
             {
-
 
                 // update
                 InputManager.Update();
@@ -57,6 +56,8 @@ namespace Text_Based_RPG
                 enemyManager.Draw();
                 player.Draw();
             }
+
+            InputManager.Update();
         }
     }
 }

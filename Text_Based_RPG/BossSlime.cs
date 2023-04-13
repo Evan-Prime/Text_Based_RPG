@@ -68,9 +68,19 @@ namespace Text_Based_RPG
                     y = targetY;
                     x = targetX;
                 }
+            } 
+            else if (health <= 0)
+            {
+                WinCondition.Win();
             }
 
             moveCounter++;
+        }
+
+        public void Draw()
+        {
+            base.Draw();
+            
         }
     }
 }

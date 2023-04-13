@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal static class WinCondition
+    internal static class LoseCondition
     {
-        public static void Win()
+        public static void Lose()
         {
             InputManager.IsGameRunning(false, true);
             Console.Clear();
-            Console.WriteLine("███████████");
-            Console.WriteLine("█ You won █");
-            Console.WriteLine("███████████");
+            Console.WriteLine("████████████");
+            Console.WriteLine("█ You Lose █");
+            Console.WriteLine("████████████");
             Console.WriteLine("");
             Console.WriteLine("Press any Esc key to Exit");
             Console.ReadKey(true);

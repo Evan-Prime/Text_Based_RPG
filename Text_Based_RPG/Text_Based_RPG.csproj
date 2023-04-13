@@ -57,6 +57,7 @@
     <Compile Include="InputManager.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
+    <Compile Include="LoseCondition.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="NormalSlime.cs" />
     <Compile Include="Player.cs" />
