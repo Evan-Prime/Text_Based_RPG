@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             Console.WriteLine("█ You Lose █");
             Console.WriteLine("████████████");
             Console.WriteLine("");
-            Console.WriteLine("Press any Esc key to Exit");
+            Console.WriteLine("Press the Esc key to Exit.");
             Console.ReadKey(true);
         }
     }
