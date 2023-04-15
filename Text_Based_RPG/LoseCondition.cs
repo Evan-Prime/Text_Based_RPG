@@ -12,9 +12,9 @@ namespace Text_Based_RPG
         {
             InputManager.IsGameRunning(false, true);
             Console.Clear();
-            Console.WriteLine("████████████");
-            Console.WriteLine("█ You Lose █");
-            Console.WriteLine("████████████");
+            Console.WriteLine("███████████████");
+            Console.WriteLine("█ You Lose ;( █");
+            Console.WriteLine("███████████████");
             Console.WriteLine("");
             Console.WriteLine("Press the Esc key to Exit.");
             Console.ReadKey(true);
