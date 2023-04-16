@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         private int targetX;
         private bool moveLeft = true;
 
-        public NormalSlime(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 15, 15, 4, 'o', 4, "Slime")
+        public NormalSlime(int x, int y, int tempX, int tempY, Map map, EnemyManager enemyManager, Player player, ItemManager itemManager) : base(x, y, tempX, tempY, map, enemyManager, player, itemManager, 15, 15, 4, 'o', 4, "Slime")
         {
 
         }
@@ -38,7 +38,7 @@ namespace Text_Based_RPG
                             break;
                     }
 
-                    if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                    if (map.IsFloorHere(targetX, targetY) == false)
                     {
                         if (moveLeft == true)
                         {
@@ -51,7 +51,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
+                    if (enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
                     {
                         if (moveLeft == true)
                         {
@@ -64,7 +64,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.player.AmIHere(targetX, targetY, damage) == true)
+                    if (player.AmIHere(targetX, targetY, damage) == true)
                     {
                         if (moveLeft == true)
                         {
@@ -77,7 +77,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.itemManager.IsAnyItemHere(targetX, targetY, false) == true)
+                    if (itemManager.IsAnyItemHere(targetX, targetY, false) == true)
                     {
                         if (moveLeft == true)
                         {

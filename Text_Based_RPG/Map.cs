@@ -42,10 +42,7 @@ namespace Text_Based_RPG
 
         public void Drawtile(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
-            //x = x + 1;
-            //y = y + 1;
-            Console.Write(map[y,x]);
+            GameManager.render.AddToRender(map[y, x], x, y);
         }
 
         public bool IsFloorHere (int x, int y)

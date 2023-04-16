@@ -9,6 +9,11 @@ namespace Text_Based_RPG
     internal class EnemyManager
     {
         Enemy[] enemies = new Enemy[31];
+
+        Player player;
+        Map map;
+        ItemManager itemManager;
+
         public EvilClone clone;
         public EvilPixie pixie;
         public NormalSlime slime;
@@ -19,39 +24,7 @@ namespace Text_Based_RPG
 
         public EnemyManager()
         {
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                x = Settings.RandomNum(15,115);
-                y = Settings.RandomNum(1, 19);
-                while (GameManager.map.IsFloorHere(x, y) == false || IsAnyoneHere(x, y, 0) == true)
-                {
-                    x = Settings.RandomNum(15, 115);
-                    y = Settings.RandomNum(1, 19);
-                }
-                if (i == 0)
-                {
-                    bossSlime = new BossSlime(107, 2, 107, 2);
-                    enemies[i] = bossSlime;
-                }
-                else if (i > 0 && i < 26)
-                {
-                    pixie = new EvilPixie(x, y, x, y);
-                    enemies[i] = pixie;
-                }
-                else if (i >= 26 && i < 29)
-                {
-                    slime = new NormalSlime(x, y, x, y);
-                    enemies[i] = slime;
-                }
-                else //if (i >= 29 && i <= 30)
-                {
-                    clone = new EvilClone(x, y, x, y);
-                    enemies[i] = clone;
-                }
-            }
-
-
-
+            
         }
 
         public void Update()
@@ -60,6 +33,55 @@ namespace Text_Based_RPG
             {
                 enemies[i].Update();
             }
+        }
+
+        public void GenerateEnemies()
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                x = Settings.RandomNum(15, 115);
+                y = Settings.RandomNum(1, 19);
+                while (map.IsFloorHere(x, y) == false || IsAnyoneHere(x, y, 0) == true)
+                {
+                    x = Settings.RandomNum(15, 115);
+                    y = Settings.RandomNum(1, 19);
+                }
+                if (i == 0)
+                {
+                    bossSlime = new BossSlime(107, 2, 107, 2, map, this, player, itemManager);
+                    enemies[i] = bossSlime;
+                }
+                else if (i > 0 && i < 26)
+                {
+                    pixie = new EvilPixie(x, y, x, y, map, this, player, itemManager);
+                    enemies[i] = pixie;
+                }
+                else if (i >= 26 && i < 29)
+                {
+                    slime = new NormalSlime(x, y, x, y, map, this, player, itemManager);
+                    enemies[i] = slime;
+                }
+                else //if (i >= 29 && i <= 30)
+                {
+                    clone = new EvilClone(x, y, x, y, map, this, player, itemManager);
+                    enemies[i] = clone;
+                }
+            }
+        }
+
+        public void SetMap(Map map)
+        {
+            this.map = map;
+        }
+
+        public void SetPlayer(Player player)
+        {
+            this.player = player;
+        }
+
+        public void SetItemManager(ItemManager itemManager)
+        {
+            this.itemManager = itemManager;
         }
 
         public void Draw()

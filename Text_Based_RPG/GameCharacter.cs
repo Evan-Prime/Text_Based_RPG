@@ -17,7 +17,10 @@ namespace Text_Based_RPG
         public int damage;
         public char icon;
 
-        public GameCharacter (int x, int y, int tempX, int tempY, int health, int maxHealth, int damage, char icon)
+        protected Map map;
+        protected EnemyManager enemyManager;
+
+        public GameCharacter (int x, int y, int tempX, int tempY, int health, int maxHealth, int damage, char icon, Map map, EnemyManager enemyManager)
         {
             this.x = x;
             this.y = y;
@@ -27,6 +30,8 @@ namespace Text_Based_RPG
             this.maxHealth = maxHealth;
             this.damage = damage;
             this.icon = icon;
+            this.map = map;
+            this.enemyManager = enemyManager;
         }
 
         public void TakeDamage(int hp)
@@ -67,12 +72,11 @@ namespace Text_Based_RPG
 
             if (health > 0)
             {
-                if (GameManager.enemyManager.IsAnyoneHere(tempX, tempY, 0) == false)
+                if (enemyManager.IsAnyoneHere(tempX, tempY, 0) == false)
                 {
-                    GameManager.map.Drawtile(tempX, tempY);
+                    map.Drawtile(tempX, tempY);
                 }
-                Console.SetCursorPosition(x, y);
-                Console.Write(icon);
+                GameManager.render.AddToRender(icon, x, y);
             }
 
         }

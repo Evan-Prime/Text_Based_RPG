@@ -8,14 +8,13 @@ namespace Text_Based_RPG
 {
     internal class Player : GameCharacter
     {
-        EnemyManager enemyManager;
         ItemManager itemManager;
         private int targetX;
         private int targetY;
 
-        public Player(int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon)
+        public Player(Map map, EnemyManager enemyManager, int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon, map, enemyManager)
         {
-            
+
         }
 
         public void Update(ConsoleKeyInfo input)
@@ -49,7 +48,7 @@ namespace Text_Based_RPG
                         break;
                 }
 
-                if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                if (map.IsFloorHere(targetX, targetY) == false)
                 {
                     return;
                 }
@@ -76,16 +75,6 @@ namespace Text_Based_RPG
         public void SetItemManager(ItemManager itemManager)
         {
             this.itemManager = itemManager;
-        }
-
-        public void SetEnemyManager(EnemyManager enemyManager)
-        {
-            this.enemyManager = enemyManager;
-        }
-
-        public void Draw()
-        {
-            base.Draw();
         }
     }
 }

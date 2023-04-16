@@ -12,19 +12,19 @@ namespace Text_Based_RPG
         public int moveCounter;
         public string name;
 
-        public Enemy (int x =3, int y = 9, int tempX = 3, int tempY = 9, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☻', int moveAt = 2, string name = "Enemy") : base (x, y, tempX, tempY, health, maxHealth, damage, icon)
+        protected Player player;
+        protected ItemManager itemManager;
+
+        public Enemy (int x, int y, int tempX, int tempY, Map map, EnemyManager enemyManager, Player player, ItemManager itemManager, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☻', int moveAt = 2, string name = "Enemy") : base(x, y, tempX, tempY, health, maxHealth, damage, icon, map, enemyManager)
         {
             moveCounter = 0;
             this.moveAt = moveAt;
             this.name = name;
+            this.player = player;
+            this.itemManager = itemManager;
         }
 
         public abstract void Update();
-
-        public void Draw()
-        {
-            base.Draw();
-        }
 
         public bool MoveCheck()
         {

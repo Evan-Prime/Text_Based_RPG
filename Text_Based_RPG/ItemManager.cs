@@ -18,14 +18,14 @@ namespace Text_Based_RPG
         int x;
         int y;
 
-        public ItemManager(Player player, EnemyManager enemyManager)
+        public ItemManager(Player player, EnemyManager enemyManager, Map map)
         {
             this.player = player;
             for (int i = 0; i < items.Length; i++)
             {
                 x = Settings.RandomNum(15, 115);
                 y = Settings.RandomNum(1, 19);
-                while (GameManager.map.IsFloorHere(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
+                while (map.IsFloorHere(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
                 {
                     x = Settings.RandomNum(15, 115);
                     y = Settings.RandomNum(1, 19);

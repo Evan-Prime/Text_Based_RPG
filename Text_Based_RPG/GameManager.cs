@@ -13,6 +13,7 @@ namespace Text_Based_RPG
         public static Player player;
         public static ItemManager itemManager;
         public static HUD hud;
+        public static Render render;
         
 
 
@@ -20,15 +21,22 @@ namespace Text_Based_RPG
         {
             map = new Map();
             enemyManager = new EnemyManager();
-            player = new Player();
-            itemManager = new ItemManager(player, enemyManager);
+            player = new Player(map, enemyManager);
+            itemManager = new ItemManager(player, enemyManager, map);
             hud = new HUD();
+            render = new Render(map, hud);
 
             player.SetItemManager(itemManager);
-            player.SetEnemyManager(enemyManager);
+            enemyManager.SetMap(map);
+            enemyManager.SetPlayer(player);
+            enemyManager.SetItemManager(itemManager);
+            enemyManager.GenerateEnemies();
+
             hud.SetPlayer(player);
             hud.SetEnemyManager(enemyManager);
             hud.SetItemManager(itemManager);
+
+           
         }
 
         public void Run()

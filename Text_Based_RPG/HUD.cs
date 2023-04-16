@@ -19,6 +19,23 @@ namespace Text_Based_RPG
 
         public void Update()
         {
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.SetCursorPosition(0, 22);
+            Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
+            Console.SetCursorPosition(0, 23);
+            Console.WriteLine("█                    █                      █      █                                       █");
+            Console.SetCursorPosition(0, 24);
+            Console.WriteLine("█                    █                      █      █                                       █");
+            Console.SetCursorPosition(0, 25);
+            Console.WriteLine("█                    █                      █      █                                       █");
+            Console.SetCursorPosition(0, 26);
+            Console.WriteLine("█                    █                      █      █                                       █");
+            Console.SetCursorPosition(0, 27);
+            Console.WriteLine("█                    █                      █      █                                       █");
+            Console.SetCursorPosition(0, 28);
+            Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(1, 23);
             Console.WriteLine("Player: " + "Ramiel");

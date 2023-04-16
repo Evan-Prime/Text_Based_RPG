@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         private int targetX;
         private bool moveUp = true;
 
-        public EvilPixie(int x, int y, int tempX, int tempY) : base(x, y, tempX, tempY, 5, 5, 2, '*', 1, "Evil Pixie")
+        public EvilPixie(int x, int y, int tempX, int tempY, Map map, EnemyManager enemyManager, Player player, ItemManager itemManager) : base(x, y, tempX, tempY, map, enemyManager, player, itemManager, 5, 5, 2, '*', 1, "Evil Pixie")
         {
 
         }
@@ -38,7 +38,7 @@ namespace Text_Based_RPG
                             break;
                     }
                     
-                    if (GameManager.map.IsFloorHere(targetX, targetY) == false)
+                    if (map.IsFloorHere(targetX, targetY) == false)
                     {
                         if (moveUp == true)
                         {
@@ -51,7 +51,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
+                    if (enemyManager.IsAnyoneHere(targetX, targetY, 0) == true)
                     {
                         if (moveUp == true)
                         {
@@ -64,7 +64,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.player.AmIHere(targetX, targetY, damage) == true)
+                    if (player.AmIHere(targetX, targetY, damage) == true)
                     {
                         if (moveUp == true)
                         {
@@ -77,7 +77,7 @@ namespace Text_Based_RPG
                         return;
                     }
 
-                    if (GameManager.itemManager.IsAnyItemHere(targetX, targetY, false) == true)
+                    if (itemManager.IsAnyItemHere(targetX, targetY, false) == true)
                     {
                         if (moveUp == true)
                         {
