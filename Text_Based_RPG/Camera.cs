@@ -26,8 +26,15 @@ namespace Text_Based_RPG
         {
             playerX = player.x;
             playerY = player.y;
-            X = playerX;
-            Y = playerY;
+            if (playerX >= (Settings.cameraSizeX / 2) && playerX <= (map.map.GetLength(1) - Settings.cameraSizeX / 2))
+            {
+                X = playerX;
+            }
+
+            if (playerY >= (Settings.cameraSizeY / 2) && playerY <= (map.map.GetLength(0) - Settings.cameraSizeY / 2))
+            {
+                Y = playerY;
+            }
         }
     }
 }

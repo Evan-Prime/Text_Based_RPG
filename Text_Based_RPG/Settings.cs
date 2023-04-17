@@ -8,8 +8,8 @@ namespace Text_Based_RPG
 {
     internal static class Settings
     {
-        public const int cameraSizeX = 5;
-        public const int cameraSizeY = 5;
+        public const int cameraSizeX = 11;
+        public const int cameraSizeY = 7;
 
         
         static public Random random = new Random();

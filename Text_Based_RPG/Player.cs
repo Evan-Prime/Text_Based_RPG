@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         private int targetX;
         private int targetY;
 
-        public Player(Map map, EnemyManager enemyManager, int x = 2, int y = 2, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon, map, enemyManager)
+        public Player(Map map, EnemyManager enemyManager, int x = 6, int y = 3, int tempX = 2, int tempY = 2, int health = 10, int maxHealth = 10, int damage = 5, char icon = '☺') : base(x, y, tempX, tempY, health, maxHealth, damage, icon, map, enemyManager)
         {
 
         }

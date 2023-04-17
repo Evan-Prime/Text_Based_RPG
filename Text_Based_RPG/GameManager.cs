@@ -49,9 +49,9 @@ namespace Text_Based_RPG
             player.Draw();
             enemyManager.Draw();
             itemManager.Draw();
+            hud.Update();
             camera.Update();
             render.Draw();
-            hud.Update();
             Settings.CursorVisablityFalse();
 
             // game loop
@@ -74,8 +74,8 @@ namespace Text_Based_RPG
                 {
                     break;
                 }
-                camera.Update();
                 hud.Update();
+                camera.Update();
 
                 // draw
                 itemManager.Draw();

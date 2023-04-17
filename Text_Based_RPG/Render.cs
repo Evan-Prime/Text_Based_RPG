@@ -33,8 +33,6 @@ namespace Text_Based_RPG
             cameraX = camera.X - (Settings.cameraSizeX/2);
             cameraY = camera.Y - (Settings.cameraSizeY/2);
 
-            Console.WriteLine(cameraX + ", " + cameraY);
-
             //Drawing from Camera to Screen
             for(int y = 0; y < render1.GetLength(0); y++)
             {
@@ -82,7 +80,7 @@ namespace Text_Based_RPG
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
                                 break;
                         }
-                        Console.SetCursorPosition(x, y);
+                        Console.SetCursorPosition(x + 1, y +1);
                         Console.Write(render1[y, x]);
                     }
                 }
