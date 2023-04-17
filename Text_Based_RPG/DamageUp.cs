@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         int damageValue;
 
-        public DamageUp(int x, int y, Player player, int effectValue) : base(x, y, '^', true, "Power-Up", effectValue, player)
+        public DamageUp(int x, int y, Player player, int effectValue, InventorySystem inventory) : base(x, y, '^', true, "Power-Up", effectValue, player, inventory)
         {
             this.damageValue = effectValue;
         }

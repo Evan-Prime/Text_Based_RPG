@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         Player player;
         EnemyManager enemyManager;
         ItemManager itemManager;
+        InventorySystem inventory;
 
         public HUD ()
         {
@@ -21,6 +22,8 @@ namespace Text_Based_RPG
         {
 
             Console.ForegroundColor = ConsoleColor.Gray;
+            
+            //map border
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("█████████████");
             for (int i = 1; i < 8; i++)
@@ -32,6 +35,8 @@ namespace Text_Based_RPG
             }
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("█████████████");
+
+            //stat tracker border
             Console.SetCursorPosition(0, 10);
             Console.WriteLine("█████████████████████████████████████████████");
             for (int j = 11; j < 16; j++)
@@ -41,6 +46,8 @@ namespace Text_Based_RPG
             }
             Console.SetCursorPosition(0, 16);
             Console.WriteLine("█████████████████████████████████████████████");
+            
+            //used item tracker
             for (int k = 17; k < 20; k++)
             {
                 Console.SetCursorPosition(2, k);
@@ -149,6 +156,11 @@ namespace Text_Based_RPG
         public void SetItemManager(ItemManager itemManager)
         {
             this.itemManager = itemManager;
+        }
+
+        public void SetInventorySystem(InventorySystem inventory)
+        {
+            this.inventory = inventory;
         }
     }
 }

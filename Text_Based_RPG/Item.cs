@@ -16,7 +16,7 @@ namespace Text_Based_RPG
         public int effectValue;
         public Player player;
 
-        public Item(int x, int y, char icon, bool active, string name, int effectValue, Player player)
+        public Item(int x, int y, char icon, bool active, string name, int effectValue, Player player, InventorySystem inventory)
         {
             this.x = x;
             this.y = y;

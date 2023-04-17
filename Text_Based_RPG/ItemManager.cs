@@ -18,7 +18,7 @@ namespace Text_Based_RPG
         int x;
         int y;
 
-        public ItemManager(Player player, EnemyManager enemyManager, Map map)
+        public ItemManager(Player player, EnemyManager enemyManager, Map map, InventorySystem inventory)
         {
             this.player = player;
             for (int i = 0; i < items.Length; i++)
@@ -32,17 +32,17 @@ namespace Text_Based_RPG
                 }
                 if (i <= 24)
                 {
-                    healthPotion = new HealthPotion(x, y, player, 5);
+                    healthPotion = new HealthPotion(x, y, player, 5, inventory);
                     items[i] = healthPotion;
                 }
                 if (i >= 25 && i <= 29)
                 {
-                    healthUp = new HealthUp(x, y, player, 5);
+                    healthUp = new HealthUp(x, y, player, 5, inventory);
                     items[i] = healthUp;
                 }
                 if (i >= 30 && i <= 34)
                 {
-                    damageUp = new DamageUp(x, y, player, 5);
+                    damageUp = new DamageUp(x, y, player, 5, inventory);
                     items[i] = damageUp;
                 }
             }

@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         public static Map map;
         public static EnemyManager enemyManager;
         public static Player player;
+        public static InventorySystem inventory;
         public static ItemManager itemManager;
         public static HUD hud;
         public static Camera camera;
@@ -23,7 +24,8 @@ namespace Text_Based_RPG
             map = new Map();
             enemyManager = new EnemyManager();
             player = new Player(map, enemyManager);
-            itemManager = new ItemManager(player, enemyManager, map);
+            inventory = new InventorySystem();
+            itemManager = new ItemManager(player, enemyManager, map, inventory);
             hud = new HUD();
             camera = new Camera(map, player);
             render = new Render(map, hud, camera);
