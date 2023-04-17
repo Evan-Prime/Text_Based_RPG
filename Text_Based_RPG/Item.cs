@@ -43,8 +43,7 @@ namespace Text_Based_RPG
                 
                 if (active == false)
                 {
-                    Console.SetCursorPosition(x, y);
-                    Console.Write(' ');
+                   GameManager.render.AddToRender(' ', x, y);
                 }
             }
             return item;

@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         public static void Lose()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("███████████████");
             Console.WriteLine("█ You Lose ;( █");
             Console.WriteLine("███████████████");

@@ -33,14 +33,21 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("█████████████");
             Console.SetCursorPosition(0, 10);
-            Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
+            Console.WriteLine("█████████████████████████████████████████████");
             for (int j = 11; j < 16; j++)
             {
                 Console.SetCursorPosition(0, j);
-                Console.WriteLine("█                    █                      █      █                                       █");
+                Console.WriteLine("█                    █                      █");
             }
             Console.SetCursorPosition(0, 16);
-            Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
+            Console.WriteLine("█████████████████████████████████████████████");
+            for (int k = 17; k < 20; k++)
+            {
+                Console.SetCursorPosition(2, k);
+                Console.WriteLine("█                                       █");
+            }
+            Console.SetCursorPosition(2, 20);
+            Console.WriteLine("█████████████████████████████████████████");
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(1, 11);
@@ -99,31 +106,31 @@ namespace Text_Based_RPG
                 {
                     case "Health-Potion":
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.SetCursorPosition(52, 11);
+                        Console.SetCursorPosition(3, 17);
                         Console.WriteLine("Item: " + itemManager.usedLast.name);
                         if (itemManager.notUsed == true)
                         {
-                            Console.SetCursorPosition(52, 13);
+                            Console.SetCursorPosition(3, 19);
                             Console.WriteLine("Effect: Your at max health        ");
                         }
                         else if (itemManager.notUsed == false)
                         {
-                            Console.SetCursorPosition(52, 13);
+                            Console.SetCursorPosition(3, 19);
                             Console.WriteLine("Effect: You healed " + itemManager.usedLast.effectValue + " health        ");
                         }
                         break;
                     case "Health-Up":
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.SetCursorPosition(52, 11);
+                        Console.SetCursorPosition(3, 17);
                         Console.WriteLine("Item: " + itemManager.usedLast.name + "    ");
-                        Console.SetCursorPosition(52, 13);
+                        Console.SetCursorPosition(3, 19);
                         Console.WriteLine("Effect: Your health increased by " + itemManager.usedLast.effectValue);
                         break;
                     case "Power-Up":
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.SetCursorPosition(52, 11);
+                        Console.SetCursorPosition(3, 17);
                         Console.WriteLine("Item: " + itemManager.usedLast.name + "    ");
-                        Console.SetCursorPosition(52, 13);
+                        Console.SetCursorPosition(3, 19);
                         Console.WriteLine("Effect: Your damage increased by " + itemManager.usedLast.effectValue);
                         break;
                 }

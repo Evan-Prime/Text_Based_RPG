@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     internal class EnemyManager
     {
-        Enemy[] enemies = new Enemy[31];
+        Enemy[] enemies = new Enemy[33];
 
         Player player;
         Map map;
@@ -40,11 +40,11 @@ namespace Text_Based_RPG
             for (int i = 0; i < enemies.Length; i++)
             {
                 x = Settings.RandomNum(15, 115);
-                y = Settings.RandomNum(1, 19);
+                y = Settings.RandomNum(1, 33);
                 while (map.IsFloorHere(x, y) == false || IsAnyoneHere(x, y, 0) == true)
                 {
                     x = Settings.RandomNum(15, 115);
-                    y = Settings.RandomNum(1, 19);
+                    y = Settings.RandomNum(1, 33);
                 }
                 if (i == 0)
                 {
@@ -61,7 +61,7 @@ namespace Text_Based_RPG
                     slime = new NormalSlime(x, y, x, y, map, this, player, itemManager);
                     enemies[i] = slime;
                 }
-                else //if (i >= 29 && i <= 30)
+                else
                 {
                     clone = new EvilClone(x, y, x, y, map, this, player, itemManager);
                     enemies[i] = clone;

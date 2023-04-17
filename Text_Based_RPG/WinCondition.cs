@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         public static void Win()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("████████████");
             Console.WriteLine("█ You Win! █");
             Console.WriteLine("████████████");

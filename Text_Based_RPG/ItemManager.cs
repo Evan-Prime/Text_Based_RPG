@@ -9,7 +9,7 @@ namespace Text_Based_RPG
     internal class ItemManager
     {
         Player player;
-        Item[] items = new Item[30];
+        Item[] items = new Item[35];
         public DamageUp damageUp;
         public HealthPotion healthPotion;
         public HealthUp healthUp;
@@ -24,23 +24,23 @@ namespace Text_Based_RPG
             for (int i = 0; i < items.Length; i++)
             {
                 x = Settings.RandomNum(15, 115);
-                y = Settings.RandomNum(1, 19);
+                y = Settings.RandomNum(1, 33);
                 while (map.IsFloorHere(x, y) == false || enemyManager.IsAnyoneHere(x, y, 0) == true || IsAnyItemHere(x, y, false) == true)
                 {
                     x = Settings.RandomNum(15, 115);
-                    y = Settings.RandomNum(1, 19);
+                    y = Settings.RandomNum(1, 33);
                 }
                 if (i <= 24)
                 {
                     healthPotion = new HealthPotion(x, y, player, 5);
                     items[i] = healthPotion;
                 }
-                if (i >= 25 && i <= 27)
+                if (i >= 25 && i <= 29)
                 {
                     healthUp = new HealthUp(x, y, player, 5);
                     items[i] = healthUp;
                 }
-                if (i >= 28 && i <= 29)
+                if (i >= 30 && i <= 34)
                 {
                     damageUp = new DamageUp(x, y, player, 5);
                     items[i] = damageUp;
