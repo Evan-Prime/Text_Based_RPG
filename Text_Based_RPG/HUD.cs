@@ -23,48 +23,22 @@ namespace Text_Based_RPG
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("█████████████");
-            Console.SetCursorPosition(0, 1);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 1);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 2);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 2);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 3);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 3);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 4);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 4);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 5);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 5);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 6);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 6);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(0, 7);
-            Console.WriteLine("█");
-            Console.SetCursorPosition(12, 7);
-            Console.WriteLine("█");
+            for (int i = 1; i < 8; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine("█");
+                Console.SetCursorPosition(12, i);
+                Console.WriteLine("█");
+            }
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("█████████████");
             Console.SetCursorPosition(0, 10);
             Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
-            Console.SetCursorPosition(0, 11);
-            Console.WriteLine("█                    █                      █      █                                       █");
-            Console.SetCursorPosition(0, 12);
-            Console.WriteLine("█                    █                      █      █                                       █");
-            Console.SetCursorPosition(0, 13);
-            Console.WriteLine("█                    █                      █      █                                       █");
-            Console.SetCursorPosition(0, 14);
-            Console.WriteLine("█                    █                      █      █                                       █");
-            Console.SetCursorPosition(0, 15);
-            Console.WriteLine("█                    █                      █      █                                       █");
+            for (int j = 11; j < 16; j++)
+            {
+                Console.SetCursorPosition(0, j);
+                Console.WriteLine("█                    █                      █      █                                       █");
+            }
             Console.SetCursorPosition(0, 16);
             Console.WriteLine("█████████████████████████████████████████████      █████████████████████████████████████████");
 
