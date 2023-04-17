@@ -41,34 +41,13 @@ namespace Text_Based_RPG
             if (health < 0) health = 0;
             if (health == 0)
             {
-                Console.SetCursorPosition(x, y);
-                Console.Write(' ');
+                GameManager.render.AddToRender('X', x, y);
             }
         }
 
         public void Draw()
         {
-            switch (icon)
-            {
-                case 'o':
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    break;
-                case '0':
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    break;
-                case '*':
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    break;
-                case '☻':
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    break;
-                case '☺':
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
-            }
+            
 
             if (health > 0)
             {

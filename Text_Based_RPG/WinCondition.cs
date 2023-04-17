@@ -10,11 +10,12 @@ namespace Text_Based_RPG
     {
         public static void Win()
         {
+            Console.Clear();
             Console.WriteLine("████████████");
             Console.WriteLine("█ You Win! █");
             Console.WriteLine("████████████");
             Console.WriteLine("");
-            Console.WriteLine("Press the Esc key to Exit.");
+            Console.WriteLine("Press any key to Exit.");
             Console.ReadKey(true);
         }
     }

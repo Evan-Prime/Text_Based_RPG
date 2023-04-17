@@ -76,5 +76,14 @@ namespace Text_Based_RPG
         {
             this.itemManager = itemManager;
         }
+
+        public bool IsPlayerDead()
+        {
+            if (health <= 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

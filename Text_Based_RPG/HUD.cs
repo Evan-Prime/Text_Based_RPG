@@ -113,8 +113,8 @@ namespace Text_Based_RPG
                         Console.SetCursorPosition(52, 25);
                         Console.WriteLine("Effect: Your health increased by " + itemManager.usedLast.effectValue);
                         break;
-                    case "Damage-Up":
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                    case "Power-Up":
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.SetCursorPosition(52, 23);
                         Console.WriteLine("Item: " + itemManager.usedLast.name + "    ");
                         Console.SetCursorPosition(52, 25);

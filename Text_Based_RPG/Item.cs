@@ -52,26 +52,13 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
-            switch (icon)
-            {
-                case '+':
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break;
-                case '♥':
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case '^':
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                default:
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
-            }
-
             if (active == true)
             {
-                Console.SetCursorPosition(x, y);
-                Console.Write(icon);
+                GameManager.render.AddToRender(icon, x, y);
+            }
+            else
+            {
+                GameManager.render.AddToRender(' ', x, y);
             }
         }
     }

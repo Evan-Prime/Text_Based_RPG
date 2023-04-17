@@ -13,6 +13,7 @@ namespace Text_Based_RPG
         public static Player player;
         public static ItemManager itemManager;
         public static HUD hud;
+        public static Camera camera;
         public static Render render;
         
 
@@ -24,8 +25,10 @@ namespace Text_Based_RPG
             player = new Player(map, enemyManager);
             itemManager = new ItemManager(player, enemyManager, map);
             hud = new HUD();
-            render = new Render(map, hud);
+            camera = new Camera(map, player);
+            render = new Render(map, hud, camera);
 
+            map.DrawMap();
             player.SetItemManager(itemManager);
             enemyManager.SetMap(map);
             enemyManager.SetPlayer(player);
@@ -42,30 +45,44 @@ namespace Text_Based_RPG
         public void Run()
         {
             // initializing
-            InputManager.IsGameRunning(true, false);
+            bool gameInPlay = true;
             player.Draw();
             enemyManager.Draw();
             itemManager.Draw();
+            camera.Update();
+            render.Draw();
             hud.Update();
             Settings.CursorVisablityFalse();
 
             // game loop
-            while (InputManager.IsGameRunning(true, false) == true)
+            while (gameInPlay == true)
             {
 
                 // update
                 InputManager.Update();
+                if (InputManager.IsQuiting() == true)
+                {
+                    break;
+                }
                 player.Update(InputManager.input);
+                if (player.IsPlayerDead() == true)
+                {
+                    break;
+                }
                 enemyManager.Update();
+                if (enemyManager.IsBossDead() == true)
+                {
+                    break;
+                }
+                camera.Update();
                 hud.Update();
 
                 // draw
                 itemManager.Draw();
                 enemyManager.Draw();
                 player.Draw();
+                render.Draw();
             }
-
-            InputManager.Update();
         }
     }
 }

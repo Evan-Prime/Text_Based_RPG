@@ -112,5 +112,20 @@ namespace Text_Based_RPG
             }
             return false;
         }
+
+        public bool IsBossDead()
+        {
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if (enemies[i] == bossSlime)
+                {
+                    if (bossSlime.health <= 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }

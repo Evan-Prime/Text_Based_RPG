@@ -10,13 +10,12 @@ namespace Text_Based_RPG
     {
         public static void Lose()
         {
-            InputManager.IsGameRunning(false, true);
             Console.Clear();
             Console.WriteLine("███████████████");
             Console.WriteLine("█ You Lose ;( █");
             Console.WriteLine("███████████████");
             Console.WriteLine("");
-            Console.WriteLine("Press the Esc key to Exit.");
+            Console.WriteLine("Press any key to Exit.");
             Console.ReadKey(true);
         }
     }

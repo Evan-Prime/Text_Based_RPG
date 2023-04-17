@@ -13,7 +13,7 @@ namespace Text_Based_RPG
 
         public Map()
         {
-            DrawMap();
+            
         }
          
         public void DrawMap()
@@ -25,18 +25,8 @@ namespace Text_Based_RPG
                 for (int x = 0; x < mapTotal[y].Length; x++)
                 {
                     map[y, x] = mapTotal[y][x];
-                    switch(map[y, x])
-                    {
-                        case '█':
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                            break;
-                        case ' ':
-                            Console.BackgroundColor = ConsoleColor.Black;
-                            break;
-                    }
-                    Console.Write(map[y, x]);
+                    GameManager.render.AddToRender(map[y, x], x, y);
                 }
-                Console.WriteLine();
             }
         }
 

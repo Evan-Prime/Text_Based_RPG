@@ -14,21 +14,13 @@ namespace Text_Based_RPG
             input = Console.ReadKey(true);
         }
 
-        public static bool IsGameRunning(bool isGameNotOver, bool isBossOrPlayerDead)
+        public static bool IsQuiting()
         {
-            isGameNotOver = true;
-
             if (input.Key == ConsoleKey.Escape)
             {
-                isGameNotOver = false;
+                return true;
             }
-
-            if (isBossOrPlayerDead == true)
-            {
-                isGameNotOver = false;
-            }
-
-            return isGameNotOver;
+            return false;
         }
 
     }
