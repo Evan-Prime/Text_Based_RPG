@@ -14,6 +14,10 @@ namespace Text_Based_RPG
         public InventorySystem()
         {
             name = new string[3];
+            name[0] = "Health-Potion";
+            name[1] = "Health-Up";
+            name[2] = "Damage-Up";
+
             amount = new int[3];
             for (int i = 0; i < amount.Length; i++)
             {
@@ -21,9 +25,8 @@ namespace Text_Based_RPG
             }
         } 
 
-        public void InventorySet(int num, string itemName, int value)
+        public void InventorySet(int num, int value)
         {
-            name[num] = itemName;
             amount[num] = amount[num] + value;
         }
 

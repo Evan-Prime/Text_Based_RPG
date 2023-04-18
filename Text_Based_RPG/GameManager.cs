@@ -40,6 +40,7 @@ namespace Text_Based_RPG
             hud.SetPlayer(player);
             hud.SetEnemyManager(enemyManager);
             hud.SetItemManager(itemManager);
+            hud.SetInventorySystem(inventory);
 
            
         }

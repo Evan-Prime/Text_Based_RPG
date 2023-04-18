@@ -36,6 +36,20 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("█████████████");
 
+            //Inventory Hud
+            Console.SetCursorPosition(21, 0);
+            Console.WriteLine("█████████████████████");
+            for (int i = 1; i < 8; i++)
+            {
+                Console.SetCursorPosition(21, i);
+                Console.WriteLine("█");
+                Console.SetCursorPosition(41, i);
+                Console.WriteLine("█");
+            }
+            Console.SetCursorPosition(21, 8);
+            Console.WriteLine("█████████████████████");
+
+
             //stat tracker border
             Console.SetCursorPosition(0, 10);
             Console.WriteLine("█████████████████████████████████████████████");
@@ -56,6 +70,7 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(2, 20);
             Console.WriteLine("█████████████████████████████████████████");
 
+            //player stats
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(1, 11);
             Console.WriteLine("Player: " + "Ramiel");
@@ -64,6 +79,7 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(1, 15);
             Console.WriteLine("Damage: " + player.damage + "   ");
 
+            //enemy stats
             if (enemyManager.attackedLast != null)
             {
                 switch (enemyManager.attackedLast.name)
@@ -107,6 +123,7 @@ namespace Text_Based_RPG
                 }
             }
 
+            // used items and their effects
             if (itemManager.usedLast != null)
             {
                 switch (itemManager.usedLast.name)
@@ -142,6 +159,20 @@ namespace Text_Based_RPG
                         break;
                 }
             }
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetCursorPosition(22, 1);
+            Console.WriteLine("Items Used:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(22, 3);
+            Console.WriteLine(inventory.name[0] + " x" + inventory.amount[0]);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(22, 5);
+            Console.WriteLine(inventory.name[1] + " x" + inventory.amount[1]);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition(22, 7);
+            Console.WriteLine(inventory.name[2] + " x" + inventory.amount[2]);
+
         }
 
         public void SetPlayer(Player player)
